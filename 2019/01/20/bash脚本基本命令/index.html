@@ -5,18 +5,20 @@
   
   <title>Bash脚本基本命令 | hello</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="​    GitBash 是一个模拟 Linux 命令行体验的命令行工具，它的功能包含了 Git 命令在内的一系列命令。可以通过 ls, cat, mv, touch 等命令快捷地操作文件系统。下面来介绍一下这些命令的使用方法。 ls​    在 windows 系统中，我们打开文件管理器后，很自然就会看到当前目录下的目录及文件。但是在命令行中，我们看不到有哪些文件，所以需要 ls 这条命令来查看">
+  <meta name="description" content="​    （未完成） GitBash 是一个模拟 Linux 命令行体验的命令行工具，它的功能包含了 Git 命令在内的一系列命令。可以通过 ls, cat, mv, touch 等命令快捷地操作文件系统。下面来介绍一下这些命令的使用方法。 ls​    在 windows 系统中，我们打开文件管理器后，很自然就会看到当前目录下的目录及文件。但是在命令行中，我们看不到有哪些文件，所以需要 ls 这">
 <meta name="keywords" content="bash">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Bash脚本基本命令">
 <meta property="og:url" content="http://yoursite.com/2019/01/20/bash脚本基本命令/index.html">
 <meta property="og:site_name" content="hello">
-<meta property="og:description" content="​    GitBash 是一个模拟 Linux 命令行体验的命令行工具，它的功能包含了 Git 命令在内的一系列命令。可以通过 ls, cat, mv, touch 等命令快捷地操作文件系统。下面来介绍一下这些命令的使用方法。 ls​    在 windows 系统中，我们打开文件管理器后，很自然就会看到当前目录下的目录及文件。但是在命令行中，我们看不到有哪些文件，所以需要 ls 这条命令来查看">
+<meta property="og:description" content="​    （未完成） GitBash 是一个模拟 Linux 命令行体验的命令行工具，它的功能包含了 Git 命令在内的一系列命令。可以通过 ls, cat, mv, touch 等命令快捷地操作文件系统。下面来介绍一下这些命令的使用方法。 ls​    在 windows 系统中，我们打开文件管理器后，很自然就会看到当前目录下的目录及文件。但是在命令行中，我们看不到有哪些文件，所以需要 ls 这">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-01-20T15:18:37.947Z">
+<meta property="og:image" content="c:/Users/28534/AppData/Roaming/Typora/typora-user-images/1548167630505.png">
+<meta property="og:updated_time" content="2019-01-22T14:35:06.908Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Bash脚本基本命令">
-<meta name="twitter:description" content="​    GitBash 是一个模拟 Linux 命令行体验的命令行工具，它的功能包含了 Git 命令在内的一系列命令。可以通过 ls, cat, mv, touch 等命令快捷地操作文件系统。下面来介绍一下这些命令的使用方法。 ls​    在 windows 系统中，我们打开文件管理器后，很自然就会看到当前目录下的目录及文件。但是在命令行中，我们看不到有哪些文件，所以需要 ls 这条命令来查看">
+<meta name="twitter:description" content="​    （未完成） GitBash 是一个模拟 Linux 命令行体验的命令行工具，它的功能包含了 Git 命令在内的一系列命令。可以通过 ls, cat, mv, touch 等命令快捷地操作文件系统。下面来介绍一下这些命令的使用方法。 ls​    在 windows 系统中，我们打开文件管理器后，很自然就会看到当前目录下的目录及文件。但是在命令行中，我们看不到有哪些文件，所以需要 ls 这">
+<meta name="twitter:image" content="c:/Users/28534/AppData/Roaming/Typora/typora-user-images/1548167630505.png">
   
   
     <link rel="icon" href="/favicon.png">
@@ -81,7 +83,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">3</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">4</span></li></ul>
     </div>
   </div>
 
@@ -91,6 +93,10 @@
     <h3 class="widget-title">Recents</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2019/01/21/HTTP入门/">(no title)</a>
+          </li>
         
           <li>
             <a href="/2019/01/20/Git入门/">Git入门</a>
@@ -166,15 +172,42 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>​    GitBash 是一个模拟 Linux 命令行体验的命令行工具，它的功能包含了 Git 命令在内的一系列命令。可以通过 ls, cat, mv, touch 等命令快捷地操作文件系统。下面来介绍一下这些命令的使用方法。</p>
-<h2 id="ls"><a href="#ls" class="headerlink" title="ls"></a>ls</h2><p>​    在 windows 系统中，我们打开文件管理器后，很自然就会看到当前目录下的目录及文件。但是在命令行中，我们看不到有哪些文件，所以需要 ls 这条命令来查看当前目录的内容。ls 全称是 list，即罗列。举个栗子：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">28534@ChenYitao MINGW64 /d/frontend/hexo/myBlog (master)  </span><br><span class="line">$ <span class="built_in">cd</span> ~/<span class="built_in">local</span>                      /* 切换到用户目录下的<span class="built_in">local</span>文件夹 */</span><br><span class="line"></span><br><span class="line">28534@ChenYitao MINGW64 ~/<span class="built_in">local</span></span><br><span class="line">$ ls                            </span><br><span class="line">demo.sh  name/                   /* 可以看到使用 ls 命令罗列了 <span class="built_in">local</span> 文件夹中所有内容*/</span><br><span class="line"></span><br><span class="line">28534@ChenYitao MINGW64 ~/<span class="built_in">local</span></span><br><span class="line">$$ ls -lha                       /*使用 ls 命令并传入l, h, a 三个参数。*/</span><br><span class="line"></span><br><span class="line">total 21K</span><br><span class="line">drwxr-xr-x 1 28534 197609   0 1月  20 22:27 ./</span><br><span class="line">drwxr-xr-x 1 28534 197609   0 1月  20 15:35 ../</span><br><span class="line">-rw-r--r-- 1 28534 197609 335 1月  20 15:30 demo.sh</span><br><span class="line">drwxr-xr-x 1 28534 197609   0 1月  20 22:27 name/</span><br></pre></td></tr></table></figure>
-<p>​    上述代码中，第三个命令使用了l, h, a 三个参数。l 代表 long, 展示文件加长版的文件信息；h 代表 human, 也就是以人类看得懂的方式展现；a 代表 all，将目录中隐藏文件和文件夹（以 . 开头的文件）也展示出来，即结果中的 ./ 和 ../ ，分别代表当前目录和上一级目录。</p>
+        <p>​    （未完成）</p>
+<p>GitBash 是一个模拟 Linux 命令行体验的命令行工具，它的功能包含了 Git 命令在内的一系列命令。可以通过 ls, cat, mv, touch 等命令快捷地操作文件系统。下面来介绍一下这些命令的使用方法。</p>
+<h2 id="ls"><a href="#ls" class="headerlink" title="ls"></a>ls</h2><p>​    在 windows 系统中，我们打开文件管理器后，很自然就会看到当前目录下的目录及文件。但是在命令行中，我们看不到有哪些文件，所以需要 ls 这条命令来查看当前目录的内容。ls 全称是 list，即罗列。举几个栗子：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">28534@ChenYitao MINGW64 /d/frontend</span><br><span class="line">$ ls</span><br><span class="line"> aSimpleModuleForCalendar.js   <span class="built_in">clone</span>/   CSS3/                          hexo/</span><br><span class="line"> blogForGitTest/               CSS2/   <span class="string">'Grammar and data structure'</span>/   Paper.js</span><br></pre></td></tr></table></figure>
+<p>这段脚本在 /d/frontend 目录下使用了 ls 命令，罗列了该目录下所有文件（夹）。</p>
+<p>ls命令有几个常用的参数，分别是l, h, a 三个。</p>
+<p>l: long version, 显示文件的详细信息。</p>
+<p>h:  human readable, 将文件的大小转化为易读的单位，如 1k，240M，1.2G等，而不是10086k， 2048k。</p>
+<p>a:  all, 显示所有的文件（夹），包括以 . 符号开头的隐藏文件。 </p>
+<h2 id="cat"><a href="#cat" class="headerlink" title="cat"></a>cat</h2><p>打印文件中的数据。比如在桌面上（~ / desktop）创建了一个内容为“some contents”, 文件名为 1.txt 的文件，然后执行以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">28534@ChenYitao MINGW64 /d/frontend</span><br><span class="line">$ <span class="built_in">cd</span> ~/desktop</span><br><span class="line"></span><br><span class="line">28534@ChenYitao MINGW64 ~/desktop</span><br><span class="line">$ cat 1.txt</span><br><span class="line">some contents</span><br></pre></td></tr></table></figure>
+<p>首先将目录切换到桌面，然后对 1.txt 执行 cat 命令，命令行就会打印出 1.txt 中的内容。</p>
+<h2 id="mv"><a href="#mv" class="headerlink" title="mv"></a>mv</h2><p>该命令的全称是 move, 即移动，在windows GUI中对应剪切和重命名操作。下面举两个例子，分别对应剪切和重命名。</p>
+<ul>
+<li>剪切</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">28534@ChenYitao MINGW64 ~/desktop</span><br><span class="line">$ mv 1.txt ~/<span class="built_in">local</span></span><br><span class="line"></span><br><span class="line">28534@ChenYitao MINGW64 ~/desktop</span><br><span class="line">$ <span class="built_in">cd</span> ~/<span class="built_in">local</span></span><br><span class="line"></span><br><span class="line">28534@ChenYitao MINGW64 ~/<span class="built_in">local</span></span><br><span class="line">$ ls</span><br><span class="line">1.txt  demo.sh  name/</span><br></pre></td></tr></table></figure>
+<p>格式：mv 源文件名 目标目录</p>
+<p>上述脚本将1.txt 从桌面移动到了用户目录下的local 文件夹，通过ls命令可以看到移动成功了。</p>
+<ul>
+<li>重命名</li>
+</ul>
+<p>重命名的格式与剪切基本一致，区别在于重命名要求参数1与参数2的目录是一致的，但文件名不同。具体如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">28534@ChenYitao MINGW64 ~/desktop</span><br><span class="line">$ mv 1.txt newname.txt</span><br><span class="line"></span><br><span class="line">28534@ChenYitao MINGW64 ~/desktop</span><br><span class="line">$ ls</span><br><span class="line">newname.txt</span><br><span class="line"></span><br><span class="line">28534@ChenYitao MINGW64 ~/desktop</span><br><span class="line">$ cat newname.txt</span><br><span class="line">some contents</span><br></pre></td></tr></table></figure>
+<p>可以看出mv操作都是在 ~/desktop 目录下，仅文件名不同，文件名从1.txt 变成了newname.txt，而里面的内容仍是 some contents.</p>
+<h2 id="touch"><a href="#touch" class="headerlink" title="touch"></a>touch</h2><p>touch 的作用是新建文件。来看一个简单的栗子：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">28534@ChenYitao MINGW64 ~/desktop</span><br><span class="line">$ rm *</span><br><span class="line"></span><br><span class="line">28534@ChenYitao MINGW64 ~/desktop</span><br><span class="line">$ touch 2.txt</span><br><span class="line"></span><br><span class="line">28534@ChenYitao MINGW64 ~/desktop</span><br><span class="line">$ ls</span><br><span class="line">2.txt</span><br></pre></td></tr></table></figure>
+<p>这里我们将桌面的文件全部删除，然后使用 touch 2.txt , 从ls命令的结果可以看出，桌面上新建了 2.txt 文件。如果桌面上原本已经有一个2.txt文件了，此时执行 touch 2.txt 仅更新该文件 last modified 时间，而不会使内容发生改变。</p>
+<h2 id="explainshell-com"><a href="#explainshell-com" class="headerlink" title="explainshell.com"></a>explainshell.com</h2><p>这是一个可以为你解释各种命令的网站。你可以输入任何想要知道的命令，来查看该命令及所有输入参数的含义。比如当你想要知道 ls -lha 这个命令是用来做什么的，你可以将它输入查询框。</p>
+<p><img src="C:\Users\28534\AppData\Roaming\Typora\typora-user-images\1548167630505.png" alt="1548167630505"></p>
+<p>将鼠标悬浮在任何一个部分，将为你高亮悬浮字符的含义。所以当有不懂的命令时，尝试一下 explainshell.com </p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/20/bash脚本基本命令/" data-id="cjr50mlp600013wq9ckjinwpo" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/20/bash脚本基本命令/" data-id="cjr7v3ik00001nwq94xmhm62c" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bash/">bash</a></li></ul>
