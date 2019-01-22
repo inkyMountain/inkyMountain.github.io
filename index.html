@@ -170,7 +170,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/21/HTTP入门/" data-id="cjr7vusa10001asq9z4zwy5y3" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/21/HTTP入门/" data-id="cjr7vye8l00015sq96e50bhid" class="article-share-link">Share</a>
       
       
     </footer>
@@ -202,13 +202,23 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>（未完成）</p>
-<p>Git入门</p>
+        <h2 id="git-init"><a href="#git-init" class="headerlink" title="git init"></a>git init</h2><p>git init 用于创建本地git仓库，在需要创建的目录下使用后，会生成一个名为 .git 的文件夹用于保存数据。</p>
+<p><img src="https://inkymountain.github.io/blog-generator/img/1548169992635.png" alt="1548169992635.png"></p>
+<h2 id="git-add"><a href="#git-add" class="headerlink" title="git add"></a>git add</h2><p>在本地仓库创建之后，对任何文件进行修改，都会使其状态发生改变。</p>
+<p><img src="https://inkymountain.github.io/blog-generator/img/1548170278740.png" alt="1548170278740"></p>
+<p>如图中所示，使用git status -sb 命令查看状态，红色的M表示未处理的，内容被修改过的文件；红色的？？表示新创建的文件。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">28534@ChenYitao MINGW64 /d/frontend/hexo/myblog (master)</span><br><span class="line">$ git add <span class="built_in">source</span>/_posts/*</span><br><span class="line"></span><br><span class="line">28534@ChenYitao MINGW64 /d/frontend/hexo/myblog (master)</span><br><span class="line">$ git add img/*</span><br></pre></td></tr></table></figure>
+<p>然后使用 git add 文件目录  的形式，就可以将未处理的文件添加到待提交列表中。</p>
+<p><img src="https://inkymountain.github.io/blog-generator/img/1548170581436.png" alt="1548170581436"></p>
+<p>此时两个修改的文件状态变为绿色，下一步就可以使用git commit进行提交了。</p>
+<h2 id="git-commit-v"><a href="#git-commit-v" class="headerlink" title="git commit -v"></a>git commit -v</h2><p>git commit 命令即将add后的文件从缓存区提交到本地仓库。-v是指verbose, 繁琐的，给出的提示信息会更详细。</p>
+<p>另外 -m 也是一个常用的参数，通常使用   git commit -v -m “一些提交相关的信息”    的形式来进行提交。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/20/Git入门/" data-id="cjr7vus9u0000asq9m60jp5of" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/20/Git入门/" data-id="cjr7vye8e00005sq9s37mm1fw" class="article-share-link">Share</a>
       
       
     </footer>
@@ -274,7 +284,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/20/bash脚本基本命令/" data-id="cjr7vusaa0002asq90eb3ufsl" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/20/bash脚本基本命令/" data-id="cjr7vye8l00035sq9wu8t8pt9" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bash/">bash</a></li></ul>
@@ -321,7 +331,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/19/hello-world/" data-id="cjr7vusaa0003asq9un4ppamu" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/19/hello-world/" data-id="cjr7vye8l00025sq9i83o5pa2" class="article-share-link">Share</a>
       
       
     </footer>
