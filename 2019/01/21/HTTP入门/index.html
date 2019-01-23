@@ -3,19 +3,22 @@
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
-  <title>hello</title>
+  <title>HTTP入门 | hello</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="（未完成） contentsHTTP请求 组成部分 Chrome 开发者工具查看请求  HTTP相应 组成部分 Chrome 开发者工具查看请求  如何使用curl命令">
+  <meta name="description" content="HTTP请求格式12345678910POST / HTTP/1.1  //从左至右分别是 请求方式、请求路径、请求协议key1: value1key2: value2key3: value3……data-------------------------------------------------------------------------------- HTTP响应格式123456789">
+<meta name="keywords" content="HTTP">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hello">
+<meta property="og:title" content="HTTP入门">
 <meta property="og:url" content="http://yoursite.com/2019/01/21/HTTP入门/index.html">
 <meta property="og:site_name" content="hello">
-<meta property="og:description" content="（未完成） contentsHTTP请求 组成部分 Chrome 开发者工具查看请求  HTTP相应 组成部分 Chrome 开发者工具查看请求  如何使用curl命令">
+<meta property="og:description" content="HTTP请求格式12345678910POST / HTTP/1.1  //从左至右分别是 请求方式、请求路径、请求协议key1: value1key2: value2key3: value3……data-------------------------------------------------------------------------------- HTTP响应格式123456789">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-01-21T14:33:57.943Z">
+<meta property="og:image" content="c:/Users/28534/AppData/Roaming/Typora/typora-user-images/1548245271842.png">
+<meta property="og:updated_time" content="2019-01-23T12:22:30.300Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="hello">
-<meta name="twitter:description" content="（未完成） contentsHTTP请求 组成部分 Chrome 开发者工具查看请求  HTTP相应 组成部分 Chrome 开发者工具查看请求  如何使用curl命令">
+<meta name="twitter:title" content="HTTP入门">
+<meta name="twitter:description" content="HTTP请求格式12345678910POST / HTTP/1.1  //从左至右分别是 请求方式、请求路径、请求协议key1: value1key2: value2key3: value3……data-------------------------------------------------------------------------------- HTTP响应格式123456789">
+<meta name="twitter:image" content="c:/Users/28534/AppData/Roaming/Typora/typora-user-images/1548245271842.png">
   
   
     <link rel="icon" href="/favicon.png">
@@ -92,7 +95,7 @@
       <ul>
         
           <li>
-            <a href="/2019/01/21/HTTP入门/">(no title)</a>
+            <a href="/2019/01/21/HTTP入门/">HTTP入门</a>
           </li>
         
           <li>
@@ -116,7 +119,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/bash/">bash</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/">HTTP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bash/">bash</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -125,7 +128,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/bash/" style="font-size: 10px;">bash</a>
+      <a href="/tags/HTTP/" style="font-size: 10px;">HTTP</a> <a href="/tags/bash/" style="font-size: 10px;">bash</a>
     </div>
   </div>
 
@@ -157,24 +160,42 @@
   <div class="article-inner">
     
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      HTTP入门
+    </h1>
+  
+
+      </header>
+    
     <div class="article-entry" itemprop="articleBody">
       
-        <p>（未完成）</p>
-<h1 id="contents"><a href="#contents" class="headerlink" title="contents"></a>contents</h1><h2 id="HTTP请求"><a href="#HTTP请求" class="headerlink" title="HTTP请求"></a>HTTP请求</h2><ul>
-<li>组成部分</li>
-<li>Chrome 开发者工具查看请求</li>
-</ul>
-<h2 id="HTTP相应"><a href="#HTTP相应" class="headerlink" title="HTTP相应"></a>HTTP相应</h2><ul>
-<li>组成部分</li>
-<li>Chrome 开发者工具查看请求</li>
-</ul>
-<h2 id="如何使用curl命令"><a href="#如何使用curl命令" class="headerlink" title="如何使用curl命令"></a>如何使用curl命令</h2>
+        <h2 id="HTTP请求格式"><a href="#HTTP请求格式" class="headerlink" title="HTTP请求格式"></a>HTTP请求格式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">POST / HTTP/1.1  //从左至右分别是 请求方式、请求路径、请求协议</span><br><span class="line">key1: value1</span><br><span class="line">key2: value2</span><br><span class="line">key3: value3</span><br><span class="line">……</span><br><span class="line"></span><br><span class="line">data-----------------</span><br><span class="line">---------------------</span><br><span class="line">---------------------</span><br><span class="line">---------------------</span><br></pre></td></tr></table></figure>
+<h2 id="HTTP响应格式"><a href="#HTTP响应格式" class="headerlink" title="HTTP响应格式"></a>HTTP响应格式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">HTTP/1.1 200 OK  //从左至右分别是 请求方式、请求路径、请求协议</span><br><span class="line">key1: value1</span><br><span class="line">key2: value2</span><br><span class="line">key3: value3</span><br><span class="line">……</span><br><span class="line"></span><br><span class="line">data-----------------</span><br><span class="line">---------------------</span><br><span class="line">---------------------</span><br><span class="line">---------------------</span><br></pre></td></tr></table></figure>
+<h2 id="Chrome-开发者工具查看请求和响应"><a href="#Chrome-开发者工具查看请求和响应" class="headerlink" title="Chrome 开发者工具查看请求和响应"></a>Chrome 开发者工具查看请求和响应</h2><p><img src="C:\Users\28534\AppData\Roaming\Typora\typora-user-images\1548245271842.png" alt="1548245100552">查看请求步骤：</p>
+<ol>
+<li>按下F12，调出开发者工具。</li>
+<li>打开肥宅快乐站</li>
+<li>点击Headers(即1处红框)</li>
+<li>点击红框2处，view source。</li>
+<li>点击红框2处，view source。</li>
+<li>点击红框2处，view source。</li>
+<li>这样就可以看到HTTP请求和响应内容了。</li>
+</ol>
+<h2 id="如何使用curl命令"><a href="#如何使用curl命令" class="headerlink" title="如何使用curl命令"></a>如何使用curl命令</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">28534@ChenYitao MINGW64 /d/frontend</span><br><span class="line">$ curl www.baidu.com</span><br><span class="line"></span><br><span class="line">  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current</span><br><span class="line">                                 Dload  Upload   Total   Spent    Left  Speed</span><br><span class="line">100  2381  100  2381    0     0   2381      0  0:00:01 --:--:--  0:00:01  145k&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;!--STATUS OK--&gt;&lt;html&gt; &lt;head&gt;&lt;meta http-equiv=content-type content=text/html;charset=utf-8&gt;&lt;meta http-equiv=X-UA-Compatible content=IE=Edge&gt;&lt;meta content=always name=referrer&gt;&lt;link rel=stylesheet type=text/css href=http://s1.bdstatic.com/r/www/cache/bdorz/baidu.min.css&gt;&lt;title&gt;百度一下，你就知道&lt;/title&gt;&lt;/head&gt; &lt;body link=#0000cc&gt; &lt;div id=wrapper&gt; &lt;div id=head&gt; &lt;div class=head_wrapper&gt; &lt;div class=s_form&gt; &lt;div class=s_form_wrapper&gt; ....太长了省略</span><br></pre></td></tr></table></figure>
+<p>格式：curl 网址</p>
+<p>返回：请求的内容，如html，图片等。</p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/21/HTTP入门/" data-id="cjr7xjo9s0001zsq9c6fqxidq" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/21/HTTP入门/" data-id="cjr9636x00000x8q92pbs04y5" class="article-share-link">Share</a>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTTP/">HTTP</a></li></ul>
+
     </footer>
   </div>
   
