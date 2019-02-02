@@ -76,7 +76,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">5</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">6</span></li></ul>
     </div>
   </div>
 
@@ -86,6 +86,10 @@
     <h3 class="widget-title">Recents</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2019/01/31/CSS基本布局技巧/">CSS基本布局技巧</a>
+          </li>
         
           <li>
             <a href="/2019/01/26/HTML常用标签/">HTML标签基础</a>
@@ -103,10 +107,6 @@
             <a href="/2019/01/20/bash脚本基本命令/">Bash脚本基本命令</a>
           </li>
         
-          <li>
-            <a href="/2019/01/19/hello-world/">Hello World</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -116,7 +116,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/">HTTP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bash/">bash</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/">HTTP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bash/">bash</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -125,7 +125,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/HTTP/" style="font-size: 10px;">HTTP</a> <a href="/tags/bash/" style="font-size: 10px;">bash</a>
+      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/HTTP/" style="font-size: 10px;">HTTP</a> <a href="/tags/bash/" style="font-size: 10px;">bash</a>
     </div>
   </div>
 
@@ -148,6 +148,62 @@
 </aside>
         
         <section id="main">
+  
+    <article id="post-CSS基本布局技巧" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/01/31/CSS基本布局技巧/" class="article-date">
+  <time datetime="2019-01-31T05:58:54.099Z" itemprop="datePublished">2019-01-31</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/31/CSS基本布局技巧/">CSS基本布局技巧</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><hr></p>
+<h1 id="左右结构"><a href="#左右结构" class="headerlink" title="左右结构"></a>左右结构</h1><p>​    使用悬浮属性可以达到左右结构的效果。具体的实现方法是给所有标签加上float: left 或者 float: right。但是浮动后会有副作用，因为浮动元素脱离了文档流，盒子的宽度会缩减到最小，并且会和下方未浮动的元素重合。重合的问题可以通过clear属性解决。具体的方法有三种：</p>
+<ol>
+<li>使用一个空的div，给这个div施加clear: both属性。但是这个方法，会给页面增加无用的标签，容易让人费解其作用。</li>
+<li>给父元素加overflow: hidden属性。这个属性本身是文档流内容超出父元素边框时的处理方式，但它有个自动清理子元素的副作用，所以可以用来解决问题。</li>
+<li>给父元素加clearfix类。这个方法是通过给div的::after伪元素施加clear属性，来达到清理的目的。这个方法与第一个方法的原理类似，但利用的是伪元素，不会给页面添加没有意义的div标签，是<strong>最为推荐</strong>的做法。</li>
+</ol>
+<h1 id="左中右结构"><a href="#左中右结构" class="headerlink" title="左中右结构"></a>左中右结构</h1><p>​    左中右结构属于左右结构的一种特殊形式，所以基本做法与左右结构相同。额外的操作是给三个元素设置width属性，并使其和为100%，达到刚好占用一行的目的。最好给三个元素再加上box-sizing: border-box 属性，避免给元素加了margin或者padding属性后，元素宽度溢出而导致自动换行。</p>
+<h1 id="水平居中"><a href="#水平居中" class="headerlink" title="水平居中"></a>水平居中</h1><p>​    如果是内联元素，实现居中只要在父元素上加text-align: center 就可以了。行级元素则稍微复杂一些，实现水平居中主要有两种方法。</p>
+<ul>
+<li><p>margin: 0 auto</p>
+<p>使用这个属性虽然可以使元素居中，但是需要指定元素的宽度。如果不指定元素宽度，则会默认占据100%的行宽，这样margin属性也就失去意义了。</p>
+</li>
+<li><p>第二种方法是将display修改为inline-block。这样元素就同时具备的inline和block的一部分特性，可以通过text-align: center来实现居中了。</p>
+</li>
+</ul>
+<p>第二种方法是更为推荐的方法，因为给元素设置定死的width和height属性是许多bug的来源，应该尽量避免去设置这两个属性。使用JS来根据文档流大小，动态修改宽高也是一种可行的方案。</p>
+<h1 id="垂直居中"><a href="#垂直居中" class="headerlink" title="垂直居中"></a>垂直居中</h1><p>​    在inline元素中，由于高度无法通过height指定，只能使用line-height来改变，所以文字总是居中的。<br>​    在块级元素中，未指定height属性时，可以使用上下相等的padding实现居中。这样实现的好处是，任意改变元素的内容，总是垂直居中的。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/01/31/CSS基本布局技巧/" data-id="cjrnni4y50000ucq9wbtkuq8t" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
   
     <article id="post-HTML常用标签" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
@@ -234,13 +290,13 @@
 <p>如果没有label标签，那么密码两个字仅仅是普通的字符；而搭配label使用，点击密码字符时，输入框中的文字也将被选中。</p>
 <p>另外，上述代码有一种简化的写法：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">label</span>&gt;</span>密码<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"password"</span> <span class="attr">name</span>=<span class="string">"password"</span>&gt;</span><span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>这样写的好处是，input标签的id不必写了。</p>
+<p>这样写的好处是，input标签的id不必写了</p>
 <p>### </p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/26/HTML常用标签/" data-id="cjriubohk000048q9r7g06a3a" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/26/HTML常用标签/" data-id="cjrnni4yh0004ucq9u7w27drl" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML/">HTML</a></li></ul>
@@ -294,7 +350,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/21/HTTP入门/" data-id="cjriubohx000448q941b0pvrs" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/21/HTTP入门/" data-id="cjrnni4yp000aucq9pw0ztzn7" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTTP/">HTTP</a></li></ul>
@@ -344,7 +400,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/20/Git入门/" data-id="cjriubohq000148q9ahnzoei6" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/20/Git入门/" data-id="cjrnni4y90001ucq94rk84t8s" class="article-share-link">Share</a>
       
       
     </footer>
@@ -410,7 +466,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/20/bash脚本基本命令/" data-id="cjriubohy000548q9jl5zeyyr" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/20/bash脚本基本命令/" data-id="cjrnni4yg0003ucq9cmkz8h50" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bash/">bash</a></li></ul>
@@ -457,7 +513,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/19/hello-world/" data-id="cjriubohw000348q9axaofcyz" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/19/hello-world/" data-id="cjrnni4yq000bucq9tliyr6tu" class="article-share-link">Share</a>
       
       
     </footer>
