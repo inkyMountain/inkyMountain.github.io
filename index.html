@@ -76,7 +76,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">6</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">6</span></li></ul>
     </div>
   </div>
 
@@ -86,6 +86,10 @@
     <h3 class="widget-title">Recents</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2019/02/14/JS中的数据类型/">JS中的数据类型</a>
+          </li>
         
           <li>
             <a href="/2019/01/31/CSS基本布局技巧/">CSS基本布局技巧</a>
@@ -103,10 +107,6 @@
             <a href="/2019/01/20/Git入门/">Git入门</a>
           </li>
         
-          <li>
-            <a href="/2019/01/20/bash脚本基本命令/">Bash脚本基本命令</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -116,7 +116,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/">HTTP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bash/">bash</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/">HTTP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/">JS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bash/">bash</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -125,7 +125,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/HTTP/" style="font-size: 10px;">HTTP</a> <a href="/tags/bash/" style="font-size: 10px;">bash</a>
+      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/HTTP/" style="font-size: 10px;">HTTP</a> <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/bash/" style="font-size: 10px;">bash</a>
     </div>
   </div>
 
@@ -148,6 +148,89 @@
 </aside>
         
         <section id="main">
+  
+    <article id="post-JS中的数据类型" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/02/14/JS中的数据类型/" class="article-date">
+  <time datetime="2019-02-14T12:23:37.318Z" itemprop="datePublished">2019-02-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/02/14/JS中的数据类型/">JS中的数据类型</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>​    在JS中，总共有7种数据类型。</p>
+<ul>
+<li><p>number</p>
+</li>
+<li><p>boolean</p>
+</li>
+<li><p>string</p>
+</li>
+<li><p>symbol</p>
+</li>
+<li><p>null</p>
+</li>
+<li><p>undefined</p>
+</li>
+<li><p>object</p>
+</li>
+</ul>
+<p>​    这7种数据类型，可以大致分为三个类别，第一类是number, boolean, string, symbol等基本类型; 第二类是null, undefined; 第三类就是object. 把object单独分为一类是因为它包含的范围太大了。</p>
+<h1 id="基本类型"><a href="#基本类型" class="headerlink" title="基本类型"></a>基本类型</h1><h2 id="number"><a href="#number" class="headerlink" title="number"></a>number</h2><p>​    JS与JAVA相比，数据类型大大减少了。比如数字，JAVA中整数根据位数不同，分为byte, short, int, long等，还有浮点数float和double，而在JS中被笼统地归为number了。其他类型也有类似的情况。JS中所有数字, 都以64位的浮点数进行存储的，包括整数。也因为如此，在进行小数加减的时候，要注意结果小数点后面的位数。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="number">0.1</span> + <span class="number">0.2</span>);  <span class="comment">//0.30000000000000004</span></span><br><span class="line"><span class="built_in">console</span>.log((<span class="number">0.1</span> + <span class="number">0.2</span>).toFixed(<span class="number">1</span>));  <span class="comment">//0.3</span></span><br></pre></td></tr></table></figure>
+<p>​    这一小段代码除了说明浮点数的问题以外，还有另外需要注意的地方。虽然number, string等常被归类到基本类型中，但这其实是不准确的，因为number, string是具有方法和属性的，继承自Number.prototype和String.prototype。所以准确地说，它们是半对象半基本类型，比如上述代码中的toFixed()方法。</p>
+<p>​    number使用前缀区分数字的进制，前缀“0”代表八进制，“0b”代表二进制， “0x”代表16进制。涉及到与用户交互的层面时，都会被转化为十进制。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="number">011</span>);  <span class="comment">//9</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">0b11</span>);  <span class="comment">//3</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">0x11</span>);  <span class="comment">//17</span></span><br></pre></td></tr></table></figure>
+<h2 id="null-amp-undefined"><a href="#null-amp-undefined" class="headerlink" title="null &amp; undefined"></a>null &amp; undefined</h2><p>​    这两个同时存在是一个错误，意思完全相同。但是既然存在了就只能接受它。它俩的使用有一个约定俗成的规矩，就是空对象用null，未定义基本类型使用undefined。undefined比null更为常见。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var a  //undefined</span><br></pre></td></tr></table></figure>
+<h2 id="string"><a href="#string" class="headerlink" title="string"></a>string</h2><p>​    JS由于历史原因，字符串仅支持两个字节的字符，如果字符字节大于2，会被认为是两个字符。比如“𝌆”。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">“𝌆”.length  <span class="comment">//2</span></span><br></pre></td></tr></table></figure>
+<p>这也意味着，字符串的length属性是不可靠的，不一定等于字符的数量。</p>
+<h2 id="symbol"><a href="#symbol" class="headerlink" title="symbol"></a>symbol</h2><p>​    symbol是ES6中新加入的数据类型，其作用是产生一个不会发生重复的数据。这里通过介绍使用symbol作为变量名，来讲解其基本用法。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> name = <span class="built_in">Symbol</span>();</span><br><span class="line"><span class="keyword">let</span> age = <span class="built_in">Symbol</span>();</span><br><span class="line"><span class="keyword">let</span> person = &#123;</span><br><span class="line">	[name]: <span class="string">"陈亦涛"</span>,</span><br><span class="line">	[age]: <span class="number">23</span>,</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(person[name]);  <span class="comment">//陈亦涛</span></span><br><span class="line"><span class="built_in">console</span>.log(person[age]);	<span class="comment">//23</span></span><br></pre></td></tr></table></figure>
+<p>​    上述代码声明了两个symbol类型的变量，并把它们作为person对象的属性名。Symbol()是产生数据的方式，它的作用是产生一个不会重复的数据，但是我们看不到这个数据，因为数据不是这个数据类型想要强调的地方，它的目的是避免重复。下面示范错误的写法。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> name = <span class="keyword">new</span> <span class="built_in">Symbol</span>();  <span class="comment">//error</span></span><br></pre></td></tr></table></figure>
+<p>​    symbol不是对象，所以不能使用new操作符。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> name = <span class="built_in">Symbol</span>();</span><br><span class="line"><span class="keyword">let</span> person = &#123;</span><br><span class="line">	name: <span class="string">"陈亦涛"</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">console</span>.log(person[name]);  <span class="comment">//undefined</span></span><br><span class="line"><span class="built_in">console</span>.log(person[<span class="string">"name"</span>]);  <span class="comment">//陈亦涛</span></span><br><span class="line"><span class="built_in">console</span>.log(person.name);  <span class="comment">//陈亦涛</span></span><br></pre></td></tr></table></figure>
+<p>​    这里出现的错误是对象中的name属性未用中括号 [] 包裹。那么这里的name会被认为是字符串“name”而不是变量name。</p>
+<p>​    总之，请与传统的字符串属性名相区别，时刻谨记我们所需要的是一个变量作为属性名，而不是字符串。</p>
+<h1 id="object"><a href="#object" class="headerlink" title="object"></a>object</h1><p>​    对象是一些有关联数据的集合体，就像整理房间的收纳盒。    它的表现形式是键值对，即key: value的组合。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> person = &#123;</span><br><span class="line">    name: <span class="string">"陈亦涛"</span>,</span><br><span class="line">    age: <span class="string">"23"</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>比如这个对象将人物的信息收纳到一起，可以使用person.name 或 person[“name”]的方式来调用需要的属性。</p>
+<ul>
+<li>Object.keys()  获取一个对象的key</li>
+<li>in操作符  判断一个变量是否存在于对象中</li>
+<li>for in    遍历一个对象的key</li>
+<li>for of    遍历一个对象的value</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/02/14/JS中的数据类型/" data-id="cjs4r0n3n0005r0q98g9phxy4" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS/">JS</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
   
     <article id="post-CSS基本布局技巧" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
@@ -193,7 +276,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/31/CSS基本布局技巧/" data-id="cjrnni4y50000ucq9wbtkuq8t" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/31/CSS基本布局技巧/" data-id="cjs4r0n3f0001r0q9y3s3oouo" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li></ul>
@@ -296,7 +379,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/26/HTML常用标签/" data-id="cjrnni4yh0004ucq9u7w27drl" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/26/HTML常用标签/" data-id="cjs4r0n3h0002r0q9x1tzmhpq" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML/">HTML</a></li></ul>
@@ -350,7 +433,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/21/HTTP入门/" data-id="cjrnni4yp000aucq9pw0ztzn7" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/21/HTTP入门/" data-id="cjs4r0n3m0004r0q9izvzudry" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTTP/">HTTP</a></li></ul>
@@ -400,7 +483,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/20/Git入门/" data-id="cjrnni4y90001ucq94rk84t8s" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/20/Git入门/" data-id="cjs4r0n3b0000r0q9gs0gkjhv" class="article-share-link">Share</a>
       
       
     </footer>
@@ -466,7 +549,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/20/bash脚本基本命令/" data-id="cjrnni4yg0003ucq9cmkz8h50" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/20/bash脚本基本命令/" data-id="cjs4r0n3r0009r0q91kkxgod7" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bash/">bash</a></li></ul>
@@ -513,7 +596,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/19/hello-world/" data-id="cjrnni4yq000bucq9tliyr6tu" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/19/hello-world/" data-id="cjs4r0n3o0006r0q9awmh19q5" class="article-share-link">Share</a>
       
       
     </footer>
@@ -531,7 +614,7 @@
   <div class="outer">
     <div id="footer-info" class="inner">
       <a href="/" class="logo">hello</a>
-      &copy; 2019 chen yitao<br>
+      &copy; 2019 陈亦涛<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
