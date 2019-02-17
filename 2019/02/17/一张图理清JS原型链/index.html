@@ -3,20 +3,21 @@
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
-  <title>hello</title>
+  <title>JS中的数据类型转换 | hello</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="title:一张图理清JS原型链 tags:原型链 原型的理解在JS中，__proto__可以理解为“爸爸”，prototype则是祖辈的传统手艺。爸爸每生出一个孩子，孩子就会具备从爸爸那沿袭来的手艺（公用方法）。 在上图中，总共有三条主线。  第一条是蓝色箭头部分。var n = new Number()的__proto__指向Number.prototype，而Number.prototyp">
+  <meta name="description" content="​      原型的理解在JS中，__proto__可以理解为“爸爸”，prototype则是祖辈的传统手艺。爸爸每生出一个孩子，孩子就会具备从爸爸那沿袭来的手艺（公用方法）。 在上图中，总共有三条主线。  第一条是蓝色箭头部分。var n = new Number()的__proto__指向Number.prototype，而Number.prototype中，也有一个__proto__ ，指向">
+<meta name="keywords" content="JS">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hello">
+<meta property="og:title" content="JS中的数据类型转换">
 <meta property="og:url" content="http://yoursite.com/2019/02/17/一张图理清JS原型链/index.html">
 <meta property="og:site_name" content="hello">
-<meta property="og:description" content="title:一张图理清JS原型链 tags:原型链 原型的理解在JS中，__proto__可以理解为“爸爸”，prototype则是祖辈的传统手艺。爸爸每生出一个孩子，孩子就会具备从爸爸那沿袭来的手艺（公用方法）。 在上图中，总共有三条主线。  第一条是蓝色箭头部分。var n = new Number()的__proto__指向Number.prototype，而Number.prototyp">
+<meta property="og:description" content="​      原型的理解在JS中，__proto__可以理解为“爸爸”，prototype则是祖辈的传统手艺。爸爸每生出一个孩子，孩子就会具备从爸爸那沿袭来的手艺（公用方法）。 在上图中，总共有三条主线。  第一条是蓝色箭头部分。var n = new Number()的__proto__指向Number.prototype，而Number.prototype中，也有一个__proto__ ，指向">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://i.loli.net/2019/02/17/5c68e061a167a.png">
-<meta property="og:updated_time" content="2019-02-17T04:35:01.704Z">
+<meta property="og:updated_time" content="2019-02-17T04:38:40.025Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="hello">
-<meta name="twitter:description" content="title:一张图理清JS原型链 tags:原型链 原型的理解在JS中，__proto__可以理解为“爸爸”，prototype则是祖辈的传统手艺。爸爸每生出一个孩子，孩子就会具备从爸爸那沿袭来的手艺（公用方法）。 在上图中，总共有三条主线。  第一条是蓝色箭头部分。var n = new Number()的__proto__指向Number.prototype，而Number.prototyp">
+<meta name="twitter:title" content="JS中的数据类型转换">
+<meta name="twitter:description" content="​      原型的理解在JS中，__proto__可以理解为“爸爸”，prototype则是祖辈的传统手艺。爸爸每生出一个孩子，孩子就会具备从爸爸那沿袭来的手艺（公用方法）。 在上图中，总共有三条主线。  第一条是蓝色箭头部分。var n = new Number()的__proto__指向Number.prototype，而Number.prototype中，也有一个__proto__ ，指向">
 <meta name="twitter:image" content="https://i.loli.net/2019/02/17/5c68e061a167a.png">
   
   
@@ -94,7 +95,7 @@
       <ul>
         
           <li>
-            <a href="/2019/02/17/一张图理清JS原型链/">(no title)</a>
+            <a href="/2019/02/17/一张图理清JS原型链/">JS中的数据类型转换</a>
           </li>
         
           <li>
@@ -122,7 +123,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/">HTTP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/">JS</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bash/">bash</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/">HTTP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/">JS</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bash/">bash</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -163,11 +164,20 @@
   <div class="article-inner">
     
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      JS中的数据类型转换
+    </h1>
+  
+
+      </header>
+    
     <div class="article-entry" itemprop="articleBody">
       
-        <hr>
-<p>title:一张图理清JS原型链</p>
-<h2 id="tags-原型链"><a href="#tags-原型链" class="headerlink" title="tags:原型链"></a>tags:原型链</h2><p><img src="https://i.loli.net/2019/02/17/5c68e061a167a.png" alt="微信图片_20190217121723.png"></p>
+        <p>​    </p>
+<p><img src="https://i.loli.net/2019/02/17/5c68e061a167a.png" alt="微信图片_20190217121723.png"></p>
 <h1 id="原型的理解"><a href="#原型的理解" class="headerlink" title="原型的理解"></a>原型的理解</h1><p>在JS中，__proto__可以理解为“爸爸”，prototype则是祖辈的传统手艺。爸爸每生出一个孩子，孩子就会具备从爸爸那沿袭来的手艺（公用方法）。</p>
 <p>在上图中，总共有三条主线。</p>
 <ul>
@@ -180,14 +190,16 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> n = <span class="keyword">new</span> <span class="built_in">Number</span>(<span class="number">1</span>);</span><br><span class="line">n.toString();</span><br></pre></td></tr></table></figure>
 <p>首先它会在n引用的对象中寻找toString方法，但是找不到。第二步会进入其__proto__指向的对象，也就是Number.prototype中找toString方法，然而还是没有。最后会在Number.prototype.__proto__指向的对象，也就是Object.prototype中找toString方法，最终找到该方法并调用。</p>
 <p>按照这个过程，如果Number.prototype中存在toString方法的话，那么搜索的过程就会中止于第二步，最终就会调用在这里找到的toString，无论Object中是否存在toString方法，都不会对结果造成影响。可以使用下面的代码验证这一点。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Number</span>.prototype.toString = <span class="function">(<span class="params">(</span>) =&gt;</span> &#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">"Number中的toString方法"</span>);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">var</span> num = <span class="number">100</span>;</span><br><span class="line">num.toString()  <span class="comment">//"Number中的toString方法"</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Number</span>.prototype.toString = <span class="function">(<span class="params">(</span>) =&gt;</span> &#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">"Number中的toString方法"</span>);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">var</span> num = <span class="number">100</span>;</span><br><span class="line">num.toString()  <span class="comment">//"Number中的toString方法</span></span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/02/17/一张图理清JS原型链/" data-id="cjs8f4dsr0009ggq9sdhemcrk" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/02/17/一张图理清JS原型链/" data-id="cjs8f8lqe0009soq9l0rtdfkx" class="article-share-link">Share</a>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS/">JS</a></li></ul>
+
     </footer>
   </div>
   
