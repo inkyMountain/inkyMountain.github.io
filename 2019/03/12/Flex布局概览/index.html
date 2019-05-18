@@ -3,15 +3,19 @@
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
-  <title>Tag: HTML | hello</title>
+  <title>hello</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
+  <meta name="description" content="父元素属性控制item的排列规则，子元素属性控制item的缩放 以及个体排列。 用于父元素的属性==默认以flex-direction为row时的情况== flex-direction row                           左 =&amp;gt; 右   (default)   row - reverse           右 =&amp;gt; 左  column">
+<meta property="og:type" content="article">
 <meta property="og:title" content="hello">
-<meta property="og:url" content="http://yoursite.com/tags/HTML/index.html">
+<meta property="og:url" content="http://yoursite.com/2019/03/12/Flex布局概览/index.html">
 <meta property="og:site_name" content="hello">
+<meta property="og:description" content="父元素属性控制item的排列规则，子元素属性控制item的缩放 以及个体排列。 用于父元素的属性==默认以flex-direction为row时的情况== flex-direction row                           左 =&amp;gt; 右   (default)   row - reverse           右 =&amp;gt; 左  column">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-03-12T15:03:09.447Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hello">
+<meta name="twitter:description" content="父元素属性控制item的排列规则，子元素属性控制item的缩放 以及个体排列。 用于父元素的属性==默认以flex-direction为row时的情况== flex-direction row                           左 =&amp;gt; 右   (default)   row - reverse           右 =&amp;gt; 左  column">
   
   
     <link rel="icon" href="/favicon.png">
@@ -147,39 +151,87 @@
   
 </aside>
         
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/01/26/HTML常用标签/" class="archive-article-date">
-  <time datetime="2019-01-26T15:23:24.872Z" itemprop="datePublished">Jan 26</time>
+        <section id="main"><article id="post-Flex布局概览" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/03/12/Flex布局概览/" class="article-date">
+  <time datetime="2019-03-12T13:58:18.630Z" itemprop="datePublished">2019-03-12</time>
 </a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/01/26/HTML常用标签/">HTML标签基础</a>
-    </h1>
-  
-
-    </header>
+    
   </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>父元素属性控制item的排列规则，子元素属性控制item的缩放<small> 以及个体排列</small>。</p>
+<h2 id="用于父元素的属性"><a href="#用于父元素的属性" class="headerlink" title="用于父元素的属性"></a>用于父元素的属性</h2><p>==<strong>默认以flex-direction为row时的情况</strong>==</p>
+<h4 id="flex-direction"><a href="#flex-direction" class="headerlink" title="flex-direction"></a>flex-direction</h4><ul>
+<li><p>row                           左 =&gt; 右   <strong>(<code>default</code>)</strong> </p>
+</li>
+<li><p>row - reverse           右 =&gt; 左</p>
+</li>
+<li>column                    上 =&gt; 下</li>
+<li>column - reverse    下 =&gt; 上</li>
+</ul>
+<h3 id="flex-wrap"><a href="#flex-wrap" class="headerlink" title="flex-wrap"></a>flex-wrap</h3><ul>
+<li>nowrap                   不换行    <strong>(<code>default</code>)</strong> </li>
+<li>wrap                       上 =&gt; 下换行</li>
+<li>wrap-reverse         下 =&gt; 上换行</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">flex-flow: row nowrap;  // 缩写形式</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">flex-direction</span>: <span class="selector-tag">row</span>;</span><br><span class="line"><span class="selector-tag">flex-wrap</span>: <span class="selector-tag">nowrap</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="justify-content"><a href="#justify-content" class="headerlink" title="justify-content"></a>justify-content</h3><ul>
+<li><code>flex-start</code></li>
+<li>flex-end</li>
+<li>center</li>
+<li>space-between</li>
+<li>space-around</li>
+</ul>
+<h3 id="align-item"><a href="#align-item" class="headerlink" title="align-item"></a>align-item</h3><ul>
+<li><code>flex-start</code></li>
+<li>flex-end</li>
+<li>center</li>
+<li>base-line</li>
+<li>stretch</li>
+</ul>
+<h3 id="align-content"><a href="#align-content" class="headerlink" title="align-content"></a>align-content</h3><p>相当于多行情况下的align-item，单行时不起作用。</p>
+<h2 id="用于子元素的属性"><a href="#用于子元素的属性" class="headerlink" title="用于子元素的属性"></a>用于子元素的属性</h2><h3 id="flex-grow"><a href="#flex-grow" class="headerlink" title="flex-grow"></a>flex-grow</h3><p>默认0，不放大。&gt; 0 则在有空位时放大。<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flex-grow:1;  // 放大</span><br></pre></td></tr></table></figure></p>
+<h3 id="flex-shrink"><a href="#flex-shrink" class="headerlink" title="flex-shrink"></a>flex-shrink</h3><p>默认1，即空间不够时缩小。<br>为0也会缩小，但是缩小的底线会高一些。</p>
+<p>item的flex-shrink值不同时，越大缩小得越多。这一点与flex-grow类似。</p>
+<h3 id="flex-basis"><a href="#flex-basis" class="headerlink" title="flex-basis"></a>flex-basis</h3><p>默认auto，代表该item占据<code>主轴</code>的空间，用于计算是否有剩余空间。</p>
+<h3 id="align-self"><a href="#align-self" class="headerlink" title="align-self"></a>align-self</h3><p>特殊化该item对齐方式，可覆盖<code>align-items</code>属性</p>
+<h3 id="order"><a href="#order" class="headerlink" title="order"></a>order</h3><p>可用于改变item出现顺序。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/03/12/Flex布局概览/" data-id="cjvtnwn5f000axgq9xkgtjurm" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/05/18/小程序语法/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/02/23/jQuery简易版/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">jQuery简易版</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-  
-    </div></section>
-  
 
 </section>
       </div>

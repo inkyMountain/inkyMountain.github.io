@@ -76,7 +76,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">6</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">6</span></li></ul>
     </div>
   </div>
 
@@ -88,23 +88,23 @@
       <ul>
         
           <li>
+            <a href="/2019/05/18/Dom元素常用尺寸/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2019/05/18/Web性能优化方案/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2019/05/18/小程序语法/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/12/Flex布局概览/">(no title)</a>
+          </li>
+        
+          <li>
             <a href="/2019/02/23/jQuery简易版/">jQuery简易版</a>
-          </li>
-        
-          <li>
-            <a href="/2019/02/17/一张图理清JS原型链/">一张图理清JS原型链</a>
-          </li>
-        
-          <li>
-            <a href="/2019/02/17/JS中的数据类型转换/">JS中的数据类型转换</a>
-          </li>
-        
-          <li>
-            <a href="/2019/02/14/JS中的数据类型/">JS中的数据类型</a>
-          </li>
-        
-          <li>
-            <a href="/2019/01/31/CSS基本布局技巧/">CSS基本布局技巧</a>
           </li>
         
       </ul>
@@ -149,6 +149,234 @@
         
         <section id="main">
   
+    <article id="post-Dom元素常用尺寸" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/05/18/Dom元素常用尺寸/" class="article-date">
+  <time datetime="2019-05-18T15:21:16.284Z" itemprop="datePublished">2019-05-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><code>以下都是element的属性</code></p>
+<p>内容整理自 <a href="https://github.com/iuap-design/blog/issues/38" target="_blank" rel="noopener">这个GitHub Issue</a></p>
+<h1 id="div内部滚动条相关高度"><a href="#div内部滚动条相关高度" class="headerlink" title="div内部滚动条相关高度"></a>div内部滚动条相关高度</h1><h2 id="offsetHeight"><a href="#offsetHeight" class="headerlink" title="offsetHeight"></a>offsetHeight</h2><p>元素本体高度，不包含margin, 包含 border与padding。</p>
+<h2 id="scrollHeight"><a href="#scrollHeight" class="headerlink" title="scrollHeight"></a>scrollHeight</h2><p>存在滚动条时，子元素的整体高度。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 判断是否滚动到底</span></span><br><span class="line">element.scrollHeight - element.scrollTop === element.clientHeight</span><br></pre></td></tr></table></figure>
+<h2 id="scrollTop"><a href="#scrollTop" class="headerlink" title="scrollTop"></a>scrollTop</h2><p>子元素超出父元素的高度</p>
+<h2 id="offsetTop"><a href="#offsetTop" class="headerlink" title="offsetTop"></a>offsetTop</h2><p>与上面三个不是一家人。它是子元素距离爸爸顶部的距离。</p>
+<h1 id="element-getBoundingClientRect"><a href="#element-getBoundingClientRect" class="headerlink" title="element.getBoundingClientRect()"></a>element.getBoundingClientRect()</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// el 应是一个selector, 如 #app</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isInView</span>(<span class="params">el</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> rect = <span class="built_in">document</span>.querySelector(el).getBoundingClientRect()</span><br><span class="line">	<span class="keyword">let</span> &#123;top, left, width, height&#125; = rect  <span class="comment">// top, left是相对于viewport左上角</span></span><br><span class="line">    <span class="keyword">return</span> top &gt; <span class="number">0</span> &amp;&amp; top &lt; innerHeight? <span class="literal">true</span>: <span class="literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>该方法获取的对象，属性解释如下：</p>
+<ul>
+<li>top 距离视口 viewport 顶部的距离。<ul>
+<li>元素在viewport上面时，top &lt; 0</li>
+<li>元素在viewport下面时，top &gt; innerHeight</li>
+<li>可以用于判断元素是否在viewport中</li>
+</ul>
+</li>
+<li>left  距离视口 viewport 左侧的距离</li>
+<li>x     即x坐标，等同于 left</li>
+<li>y     即y坐标，等同于 top</li>
+<li>width 宽度</li>
+<li>height 高度</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/05/18/Dom元素常用尺寸/" data-id="cjvtnwn4p0000xgq9faq9c3jy" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Web性能优化方案" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/05/18/Web性能优化方案/" class="article-date">
+  <time datetime="2019-05-18T15:21:16.282Z" itemprop="datePublished">2019-05-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Title-Web性能优化方案"><a href="#Title-Web性能优化方案" class="headerlink" title="==Title: Web性能优化方案=="></a>==Title: Web性能优化方案==</h1><p>本文按照网页呈现的顺序，来分析对应步骤有哪些优化手段。如果从面试的角度来看，回答了<code>从浏览器输入Url到显示出网页发生了哪些事情</code>和<code>Web性能优化</code>两个问题。</p>
+<h2 id="1-缓存"><a href="#1-缓存" class="headerlink" title="1. 缓存"></a>1. 缓存</h2><p>如果缓存是可用的，浏览器会优先读取缓存中的数据。否则会进行下一步。</p>
+<h2 id="2-DNS服务器"><a href="#2-DNS服务器" class="headerlink" title="2. DNS服务器"></a>2. DNS服务器</h2><p>浏览器会根据域名，向DNS服务器查询域名对应的IP地址（在没有DNS缓存的情况下）。</p>
+<p>优化手段：</p>
+<ul>
+<li>减少页面中涉及的域名数量，可以使DNS查询最小化。</li>
+</ul>
+<h2 id="3-建立TCP连接"><a href="#3-建立TCP连接" class="headerlink" title="3. 建立TCP连接"></a>3. 建立TCP连接</h2><p>经过与服务器三次握手后，成功建立连接。主要步骤有：</p>
+<ul>
+<li>客户端向服务器请求建立连接</li>
+<li>服务器同意连接</li>
+<li>客户端通知</li>
+</ul>
+<p>在这一阶段可以进行的优化：</p>
+<ul>
+<li>设置Connection响应头，复用TCP连接</li>
+</ul>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">Connection</span>: Keep-Alive</span><br></pre></td></tr></table></figure>
+<h2 id="4-HTTP请求"><a href="#4-HTTP请求" class="headerlink" title="4. HTTP请求"></a>4. HTTP请求</h2><p>在成功建立连接后，客户端开始发送HTTP请求。优化手段有：</p>
+<ul>
+<li><strong>缓存</strong>  当请求的资源有缓存时，不发送HTTP请求，从缓存中读取数据。</li>
+<li><strong>减少HTTP数量</strong>  将多个 JS 和 CSS 文件，合并成尽量少的文件，以减少HTTP请求。</li>
+<li><strong>Cache-Control</strong>  设置缓存头，使得再次访问时，可以从缓存中读取。</li>
+<li><strong>CDN</strong>  减少客户端与服务器的物理距离，使数据传输耗时更短。</li>
+<li><strong>Cookie</strong>  减少Cookie的数量和大小，从而降低请求需要发送的数据量。</li>
+<li><strong>静态资源</strong>  静态资源与网页分布在不同域名上，可以使静态资源的请求，不需要带上Cookie，从而加速静态资源的访问。同时增加了请求的并行上限。</li>
+</ul>
+<h2 id="5-HTTP响应"><a href="#5-HTTP响应" class="headerlink" title="5. HTTP响应"></a>5. HTTP响应</h2><ul>
+<li><strong>ETag</strong>  客户端发送了HTTP请求，但由于ETag没有发生变化，HTTP响应无需传送数据。</li>
+<li><strong>Gzip</strong>  对较大的文件进行压缩，减少需要传输的数据量。</li>
+</ul>
+<h2 id="6-DOCTYPE"><a href="#6-DOCTYPE" class="headerlink" title="6. DOCTYPE"></a>6. DOCTYPE</h2><p>浏览器根据DOCTYPE对内容进行解析，所以需要：</p>
+<ul>
+<li>书写正确的DOCTYPE</li>
+</ul>
+<p>如果没有声明DOCTYPE，则浏览器只能进行猜测，使用多种解析方式进行试错，增加了解析的耗时。</p>
+<h2 id="7-CSS-amp-JS"><a href="#7-CSS-amp-JS" class="headerlink" title="7. CSS &amp; JS"></a>7. CSS &amp; JS</h2><ul>
+<li>CSS标签写在head标签中，JS标签写在body末尾。</li>
+</ul>
+<p>因为CSS与JS文件的下载都是并行的，但是在部分浏览器中，CSS文件会影响DOM元素的渲染，只有在CSS文件加载完毕后，DOM元素才会出现。故需要让CSS尽早加载完成，所以将其写在head标签中。</p>
+<p>而JS文件，其运行期间会阻塞DOM的渲染，所以需要放到最后，以提升用户体验。且放在最后，可以令DOM元素的获取更加顺利。</p>
+<h2 id="8-Image与其他文件"><a href="#8-Image与其他文件" class="headerlink" title="8. Image与其他文件"></a>8. Image与其他文件</h2><p>网页中的文件可以通过监听滚动事件，实现图片的懒加载。也可以在首屏加载完毕后，进行第二屏的预加载，提升用户体验的同时，减降低服务器负荷。</p>
+<p>较小的图片或文件，可以通过Base64的形式，直接写入代码中，以减少HTTP请求数量。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/05/18/Web性能优化方案/" data-id="cjvtnwn540003xgq9m3kajnbf" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-小程序语法" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/05/18/小程序语法/" class="article-date">
+  <time datetime="2019-05-18T15:21:16.279Z" itemprop="datePublished">2019-05-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="小程序常用语法"><a href="#小程序常用语法" class="headerlink" title="小程序常用语法"></a>小程序常用语法</h1><h2 id="响应式的插值"><a href="#响应式的插值" class="headerlink" title="响应式的插值"></a>响应式的插值</h2><ul>
+<li>使用数据</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">view</span>&gt;</span>&#123;&#123;dataName&#125;&#125; <span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>更改数据<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.setData(<span class="string">'dataName'</span>, <span class="string">'dataValue'</span>) <span class="comment">// 更改dataName的值 &amp; 更新视图</span></span><br><span class="line"><span class="keyword">this</span>.data.dataName = <span class="string">'dataValue'</span> <span class="comment">// 仅更改dataName的值</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="循环"><a href="#循环" class="headerlink" title="循环"></a>循环</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">view</span> <span class="attr">wx:for</span>=<span class="string">"&#123;&#123;array&#125;&#125;"</span> <span class="attr">wx:for-index</span>=<span class="string">"index"</span> <span class="attr">wx:for-item</span>=<span class="string">"item"</span>&gt;</span></span><br><span class="line">	// index 和 item 不写也能用，但显示声明增加可读性。</span><br><span class="line"><span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="表单的双向绑定"><a href="#表单的双向绑定" class="headerlink" title="表单的双向绑定"></a>表单的双向绑定</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">textarea</span> <span class="attr">value</span>=<span class="string">"&#123;&#123;value&#125;&#125;"</span> <span class="attr">bindinput</span>=<span class="string">"&#123;&#123;oninput&#125;&#125;"</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">textarea</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">oninput: <span class="function">(<span class="params">event</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(event.detail.value)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="控制显示"><a href="#控制显示" class="headerlink" title="控制显示"></a>控制显示</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">view</span> <span class="attr">wx:if</span>=<span class="string">"visible"</span>&gt;</span><span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="父子通信"><a href="#父子通信" class="headerlink" title="父子通信"></a>父子通信</h2><h3 id="props"><a href="#props" class="headerlink" title="props"></a>props</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">component</span> <span class="attr">text</span>=<span class="string">"data1"</span> <span class="attr">attr1</span>=<span class="string">"data2"</span> <span class="attr">attr2</span>=<span class="string">"data3"</span>&gt;</span><span class="tag">&lt;/<span class="name">component</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">properties: &#123;</span><br><span class="line">    text: &#123;</span><br><span class="line">        type: <span class="built_in">String</span>,</span><br><span class="line">        value: <span class="string">'defaultValue'</span></span><br><span class="line">    &#125;,</span><br><span class="line">    attr1: &#123;</span><br><span class="line">		...</span><br><span class="line">    &#125;,</span><br><span class="line">    attr2: &#123;</span><br><span class="line">		...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="emit"><a href="#emit" class="headerlink" title="emit"></a>emit</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.triggerEvent(eventName, data)  <span class="comment">// 子组件触发</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">view</span> <span class="attr">bindeventname</span>=<span class="string">"method"</span>&gt;</span><span class="tag">&lt;/<span class="name">view</span>&gt;</span> // 父组件捕获时间</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">method(event)&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(event.detail.value)  <span class="comment">// 事件处理函数，拿到event对象并进行相关操作。</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="登录"><a href="#登录" class="headerlink" title="登录"></a>登录</h2><h3 id="新版方法"><a href="#新版方法" class="headerlink" title="新版方法"></a>新版方法</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// 新版使用button组件获取用户信息，不会有弹窗。</span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">open-type</span>=<span class="string">"getUserInfo"</span> <span class="attr">bindgetuserinfo</span>=<span class="string">"onGetUserInfo"</span>&gt;</span></span><br><span class="line">	点击登录</span><br><span class="line"><span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">onGetUserInfo(event)&#123;</span><br><span class="line">    <span class="keyword">this</span>.data.userInfo = event.detail.userInfo</span><br><span class="line">    <span class="comment">// userInfo 是一个对象，包括nickName, avatarUrl, city等属性。</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="旧版方法"><a href="#旧版方法" class="headerlink" title="旧版方法"></a>旧版方法</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 旧版有权限请求弹窗</span></span><br><span class="line">wx.getUserInfo(&#123;</span><br><span class="line">    success: <span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">this</span>.data.userInfo = res.userInfo</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 判断是否有权限</span></span><br><span class="line">wx.getSetting(&#123;</span><br><span class="line">    success: <span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">if</span>(res.authSetting[<span class="string">'scope.userInfo'</span>])&#123;</span><br><span class="line">           <span class="comment">// do sth when authorized</span></span><br><span class="line">       	&#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 旧版情况下，该方法会弹窗请求权限。新版则直接调用fail回调函数</span></span><br><span class="line">wx.getUserInfo(&#123;</span><br><span class="line">    success: <span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">this</span>.setData(&#123;</span><br><span class="line">            userInfo: res.userInfo,</span><br><span class="line">            hasUserInfo: <span class="literal">true</span></span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/05/18/小程序语法/" data-id="cjvtnwn5s000ixgq90tgro4sb" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Flex布局概览" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/03/12/Flex布局概览/" class="article-date">
+  <time datetime="2019-03-12T13:58:18.630Z" itemprop="datePublished">2019-03-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>父元素属性控制item的排列规则，子元素属性控制item的缩放<small> 以及个体排列</small>。</p>
+<h2 id="用于父元素的属性"><a href="#用于父元素的属性" class="headerlink" title="用于父元素的属性"></a>用于父元素的属性</h2><p>==<strong>默认以flex-direction为row时的情况</strong>==</p>
+<h4 id="flex-direction"><a href="#flex-direction" class="headerlink" title="flex-direction"></a>flex-direction</h4><ul>
+<li><p>row                           左 =&gt; 右   <strong>(<code>default</code>)</strong> </p>
+</li>
+<li><p>row - reverse           右 =&gt; 左</p>
+</li>
+<li>column                    上 =&gt; 下</li>
+<li>column - reverse    下 =&gt; 上</li>
+</ul>
+<h3 id="flex-wrap"><a href="#flex-wrap" class="headerlink" title="flex-wrap"></a>flex-wrap</h3><ul>
+<li>nowrap                   不换行    <strong>(<code>default</code>)</strong> </li>
+<li>wrap                       上 =&gt; 下换行</li>
+<li>wrap-reverse         下 =&gt; 上换行</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">flex-flow: row nowrap;  // 缩写形式</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">flex-direction</span>: <span class="selector-tag">row</span>;</span><br><span class="line"><span class="selector-tag">flex-wrap</span>: <span class="selector-tag">nowrap</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="justify-content"><a href="#justify-content" class="headerlink" title="justify-content"></a>justify-content</h3><ul>
+<li><code>flex-start</code></li>
+<li>flex-end</li>
+<li>center</li>
+<li>space-between</li>
+<li>space-around</li>
+</ul>
+<h3 id="align-item"><a href="#align-item" class="headerlink" title="align-item"></a>align-item</h3><ul>
+<li><code>flex-start</code></li>
+<li>flex-end</li>
+<li>center</li>
+<li>base-line</li>
+<li>stretch</li>
+</ul>
+<h3 id="align-content"><a href="#align-content" class="headerlink" title="align-content"></a>align-content</h3><p>相当于多行情况下的align-item，单行时不起作用。</p>
+<h2 id="用于子元素的属性"><a href="#用于子元素的属性" class="headerlink" title="用于子元素的属性"></a>用于子元素的属性</h2><h3 id="flex-grow"><a href="#flex-grow" class="headerlink" title="flex-grow"></a>flex-grow</h3><p>默认0，不放大。&gt; 0 则在有空位时放大。<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flex-grow:1;  // 放大</span><br></pre></td></tr></table></figure></p>
+<h3 id="flex-shrink"><a href="#flex-shrink" class="headerlink" title="flex-shrink"></a>flex-shrink</h3><p>默认1，即空间不够时缩小。<br>为0也会缩小，但是缩小的底线会高一些。</p>
+<p>item的flex-shrink值不同时，越大缩小得越多。这一点与flex-grow类似。</p>
+<h3 id="flex-basis"><a href="#flex-basis" class="headerlink" title="flex-basis"></a>flex-basis</h3><p>默认auto，代表该item占据<code>主轴</code>的空间，用于计算是否有剩余空间。</p>
+<h3 id="align-self"><a href="#align-self" class="headerlink" title="align-self"></a>align-self</h3><p>特殊化该item对齐方式，可覆盖<code>align-items</code>属性</p>
+<h3 id="order"><a href="#order" class="headerlink" title="order"></a>order</h3><p>可用于改变item出现顺序。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/03/12/Flex布局概览/" data-id="cjvtnwn5f000axgq9xkgtjurm" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-jQuery简易版" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/02/23/jQuery简易版/" class="article-date">
@@ -180,7 +408,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/02/23/jQuery简易版/" data-id="cjsh77h0s000f8kq9q3fv80nq" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/02/23/jQuery简易版/" data-id="cjvtnwn6o000qxgq9scak28gc" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jQuery/">jQuery</a></li></ul>
@@ -234,7 +462,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/02/17/一张图理清JS原型链/" data-id="cjsh77h0q000d8kq9rntwzvew" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/02/17/一张图理清JS原型链/" data-id="cjvtnwn5t000kxgq9v9dcwxy5" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/原型链/">原型链</a></li></ul>
@@ -321,7 +549,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/02/17/JS中的数据类型转换/" data-id="cjsh77h0m00088kq9wv2lal53" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/02/17/JS中的数据类型转换/" data-id="cjvtnwn5l000dxgq9ed81w1s3" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS/">JS</a></li></ul>
@@ -404,7 +632,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/02/14/JS中的数据类型/" data-id="cjsh77h0e00038kq9t042sio3" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/02/14/JS中的数据类型/" data-id="cjvtnwn5b0006xgq9gy9oz1hj" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS/">JS</a></li></ul>
@@ -460,7 +688,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/31/CSS基本布局技巧/" data-id="cjsh77h0600008kq9xfuug5bf" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/31/CSS基本布局技巧/" data-id="cjvtnwn510002xgq9gbw72xv1" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li></ul>
@@ -563,7 +791,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/26/HTML常用标签/" data-id="cjsh77h0i00058kq99dy6j22z" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/26/HTML常用标签/" data-id="cjvtnwn590005xgq9nim90fzd" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML/">HTML</a></li></ul>
@@ -575,222 +803,11 @@
 
 
   
-    <article id="post-HTTP入门" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/01/21/HTTP入门/" class="article-date">
-  <time datetime="2019-01-21T13:20:33.194Z" itemprop="datePublished">2019-01-21</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/21/HTTP入门/">HTTP入门</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="HTTP请求格式"><a href="#HTTP请求格式" class="headerlink" title="HTTP请求格式"></a>HTTP请求格式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">POST / HTTP/1.1  //从左至右分别是 请求方式、请求路径、请求协议</span><br><span class="line">key1: value1</span><br><span class="line">key2: value2</span><br><span class="line">key3: value3</span><br><span class="line">……</span><br><span class="line"></span><br><span class="line">data-----------------</span><br><span class="line">---------------------</span><br><span class="line">---------------------</span><br><span class="line">---------------------</span><br></pre></td></tr></table></figure>
-<h2 id="HTTP响应格式"><a href="#HTTP响应格式" class="headerlink" title="HTTP响应格式"></a>HTTP响应格式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">HTTP/1.1 200 OK  //从左至右分别是 请求方式、请求路径、请求协议</span><br><span class="line">key1: value1</span><br><span class="line">key2: value2</span><br><span class="line">key3: value3</span><br><span class="line">……</span><br><span class="line"></span><br><span class="line">data-----------------</span><br><span class="line">---------------------</span><br><span class="line">---------------------</span><br><span class="line">---------------------</span><br></pre></td></tr></table></figure>
-<h2 id="Chrome-开发者工具查看请求和响应"><a href="#Chrome-开发者工具查看请求和响应" class="headerlink" title="Chrome 开发者工具查看请求和响应"></a>Chrome 开发者工具查看请求和响应</h2><p><img src="https://inkymountain.github.io/blog-generator/img/1548245271842.png" alt="1548245100552"></p>
-<p>查看请求步骤：</p>
-<ol>
-<li>按下F12，调出开发者工具。</li>
-<li>打开肥宅快乐站</li>
-<li>点击Headers(即1处红框)</li>
-<li>点击红框2处，view source。</li>
-<li>点击红框2处，view source。</li>
-<li>点击红框2处，view source。</li>
-<li>这样就可以看到HTTP请求和响应内容了。</li>
-</ol>
-<h2 id="如何使用curl命令"><a href="#如何使用curl命令" class="headerlink" title="如何使用curl命令"></a>如何使用curl命令</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">28534@ChenYitao MINGW64 /d/frontend</span><br><span class="line">$ curl www.baidu.com</span><br><span class="line"></span><br><span class="line">  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current</span><br><span class="line">                                 Dload  Upload   Total   Spent    Left  Speed</span><br><span class="line">100  2381  100  2381    0     0   2381      0  0:00:01 --:--:--  0:00:01  145k&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;!--STATUS OK--&gt;&lt;html&gt; &lt;head&gt;&lt;meta http-equiv=content-type content=text/html;charset=utf-8&gt;&lt;meta http-equiv=X-UA-Compatible content=IE=Edge&gt;&lt;meta content=always name=referrer&gt;&lt;link rel=stylesheet type=text/css href=http://s1.bdstatic.com/r/www/cache/bdorz/baidu.min.css&gt;&lt;title&gt;百度一下，你就知道&lt;/title&gt;&lt;/head&gt; &lt;body link=#0000cc&gt; &lt;div id=wrapper&gt; &lt;div id=head&gt; &lt;div class=head_wrapper&gt; &lt;div class=s_form&gt; &lt;div class=s_form_wrapper&gt; ....太长了省略</span><br></pre></td></tr></table></figure>
-<p>格式：curl 网址</p>
-<p>返回：请求的内容，如html，图片等。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/21/HTTP入门/" data-id="cjsh77h0b00018kq92cylcbhk" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTTP/">HTTP</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
 
 
-  
-    <article id="post-Git入门" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/01/20/Git入门/" class="article-date">
-  <time datetime="2019-01-19T16:33:50.000Z" itemprop="datePublished">2019-01-20</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/20/Git入门/">Git入门</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="git-init"><a href="#git-init" class="headerlink" title="git init"></a>git init</h2><p>git init 用于创建本地git仓库，在需要创建的目录下使用后，会生成一个名为 .git 的文件夹用于保存数据。</p>
-<p><img src="https://inkymountain.github.io/blog-generator/img/1548169992635.png" alt="1548169992635.png"></p>
-<h2 id="git-add"><a href="#git-add" class="headerlink" title="git add"></a>git add</h2><p>在本地仓库创建之后，对任何文件进行修改，都会使其状态发生改变。</p>
-<p><img src="https://inkymountain.github.io/blog-generator/img/1548170278740.png" alt="1548170278740"></p>
-<p>如图中所示，使用git status -sb 命令查看状态，红色的M表示未处理的，内容被修改过的文件；红色的？？表示新创建的文件。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">28534@ChenYitao MINGW64 /d/frontend/hexo/myblog (master)</span><br><span class="line">$ git add <span class="built_in">source</span>/_posts/*</span><br><span class="line"></span><br><span class="line">28534@ChenYitao MINGW64 /d/frontend/hexo/myblog (master)</span><br><span class="line">$ git add img/*</span><br></pre></td></tr></table></figure>
-<p>然后使用 git add 文件目录  的形式，就可以将未处理的文件添加到待提交列表中。</p>
-<p><img src="https://inkymountain.github.io/blog-generator/img/1548170581436.png" alt="1548170581436"></p>
-<p>此时两个修改的文件状态变为绿色，下一步就可以使用git commit进行提交了。</p>
-<h2 id="git-commit-v"><a href="#git-commit-v" class="headerlink" title="git commit -v"></a>git commit -v</h2><p>git commit 命令即将add后的文件从缓存区提交到本地仓库。-v是指verbose, 繁琐的，给出的提示信息会更详细。</p>
-<p>另外 -m 也是一个常用的参数，通常使用   git commit -v -m “一些提交相关的信息”    的形式来进行提交。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">28534@ChenYitao MINGW64 /d/frontend/hexo/myblog (master)</span><br><span class="line">$ git commit -v -m <span class="string">"新增图片&amp;修改Git入门.md的内容"</span></span><br><span class="line"></span><br><span class="line">[master 7d226c0] 新增图片&amp;修改Git入门.md的内容</span><br><span class="line">2 files changed, 27 insertions(+), 2 deletions(-)</span><br><span class="line">create mode 100644 img/1548169992635.png</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/20/Git入门/" data-id="cjsh77h0n00098kq9xh0s03z5" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-bash脚本基本命令" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/01/20/bash脚本基本命令/" class="article-date">
-  <time datetime="2019-01-19T16:12:13.825Z" itemprop="datePublished">2019-01-20</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/20/bash脚本基本命令/">Bash脚本基本命令</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>GitBash 是一个模拟 Linux 命令行体验的命令行工具，它的功能包含了 Git 命令在内的一系列命令。可以通过 ls, cat, mv, touch 等命令快捷地操作文件系统。下面来介绍一下这些命令的使用方法。</p>
-<h2 id="ls"><a href="#ls" class="headerlink" title="ls"></a>ls</h2><p>​    在 windows 系统中，我们打开文件管理器后，很自然就会看到当前目录下的目录及文件。但是在命令行中，我们看不到有哪些文件，所以需要 ls 这条命令来查看当前目录的内容。ls 全称是 list，即罗列。举几个栗子：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">28534@ChenYitao MINGW64 /d/frontend</span><br><span class="line">$ ls</span><br><span class="line"> aSimpleModuleForCalendar.js   <span class="built_in">clone</span>/   CSS3/                          hexo/</span><br><span class="line"> blogForGitTest/               CSS2/   <span class="string">'Grammar and data structure'</span>/   Paper.js</span><br></pre></td></tr></table></figure>
-<p>这段脚本在 /d/frontend 目录下使用了 ls 命令，罗列了该目录下所有文件（夹）。</p>
-<p>ls命令有几个常用的参数，分别是l, h, a 三个。</p>
-<p>l: long version, 显示文件的详细信息。</p>
-<p>h:  human readable, 将文件的大小转化为易读的单位，如 1k，240M，1.2G等，而不是10086k， 2048k。</p>
-<p>a:  all, 显示所有的文件（夹），包括以 . 符号开头的隐藏文件。 </p>
-<h2 id="cat"><a href="#cat" class="headerlink" title="cat"></a>cat</h2><p>打印文件中的数据。比如在桌面上（~ / desktop）创建了一个内容为“some contents”, 文件名为 1.txt 的文件，然后执行以下命令：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">28534@ChenYitao MINGW64 /d/frontend</span><br><span class="line">$ <span class="built_in">cd</span> ~/desktop</span><br><span class="line"></span><br><span class="line">28534@ChenYitao MINGW64 ~/desktop</span><br><span class="line">$ cat 1.txt</span><br><span class="line">some contents</span><br></pre></td></tr></table></figure>
-<p>首先将目录切换到桌面，然后对 1.txt 执行 cat 命令，命令行就会打印出 1.txt 中的内容。</p>
-<h2 id="mv"><a href="#mv" class="headerlink" title="mv"></a>mv</h2><p>该命令的全称是 move, 即移动，在windows GUI中对应剪切和重命名操作。下面举两个例子，分别对应剪切和重命名。</p>
-<ul>
-<li>剪切</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">28534@ChenYitao MINGW64 ~/desktop</span><br><span class="line">$ mv 1.txt ~/<span class="built_in">local</span></span><br><span class="line"></span><br><span class="line">28534@ChenYitao MINGW64 ~/desktop</span><br><span class="line">$ <span class="built_in">cd</span> ~/<span class="built_in">local</span></span><br><span class="line"></span><br><span class="line">28534@ChenYitao MINGW64 ~/<span class="built_in">local</span></span><br><span class="line">$ ls</span><br><span class="line">1.txt  demo.sh  name/</span><br></pre></td></tr></table></figure>
-<p>格式：mv 源文件名 目标目录</p>
-<p>上述脚本将1.txt 从桌面移动到了用户目录下的local 文件夹，通过ls命令可以看到移动成功了。</p>
-<ul>
-<li>重命名</li>
-</ul>
-<p>重命名的格式与剪切基本一致，区别在于重命名要求参数1与参数2的目录是一致的，但文件名不同。具体如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">28534@ChenYitao MINGW64 ~/desktop</span><br><span class="line">$ mv 1.txt newname.txt</span><br><span class="line"></span><br><span class="line">28534@ChenYitao MINGW64 ~/desktop</span><br><span class="line">$ ls</span><br><span class="line">newname.txt</span><br><span class="line"></span><br><span class="line">28534@ChenYitao MINGW64 ~/desktop</span><br><span class="line">$ cat newname.txt</span><br><span class="line">some contents</span><br></pre></td></tr></table></figure>
-<p>可以看出mv操作都是在 ~/desktop 目录下，仅文件名不同，文件名从1.txt 变成了newname.txt，而里面的内容仍是 some contents.</p>
-<h2 id="touch"><a href="#touch" class="headerlink" title="touch"></a>touch</h2><p>touch 的作用是新建文件。来看一个简单的栗子：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">28534@ChenYitao MINGW64 ~/desktop</span><br><span class="line">$ rm *</span><br><span class="line"></span><br><span class="line">28534@ChenYitao MINGW64 ~/desktop</span><br><span class="line">$ touch 2.txt</span><br><span class="line"></span><br><span class="line">28534@ChenYitao MINGW64 ~/desktop</span><br><span class="line">$ ls</span><br><span class="line">2.txt</span><br></pre></td></tr></table></figure>
-<p>这里我们将桌面的文件全部删除，然后使用 touch 2.txt , 从ls命令的结果可以看出，桌面上新建了 2.txt 文件。如果桌面上原本已经有一个2.txt文件了，此时执行 touch 2.txt 仅更新该文件 last modified 时间，而不会使内容发生改变。</p>
-<h2 id="explainshell-com"><a href="#explainshell-com" class="headerlink" title="explainshell.com"></a>explainshell.com</h2><p>这是一个可以为你解释各种命令的网站。你可以输入任何想要知道的命令，来查看该命令及所有输入参数的含义。比如当你想要知道 ls -lha 这个命令是用来做什么的，你可以将它输入查询框。</p>
-<p><img src="https://inkymountain.github.io/blog-generator/img/1548167630505.png" alt="1548167630505"></p>
-<p>将鼠标悬浮在任何一个部分，将为你高亮悬浮字符的含义。所以当有不懂的命令时，尝试一下 explainshell.com</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/20/bash脚本基本命令/" data-id="cjsh77h0o000b8kq9swd60ry7" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bash/">bash</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/01/19/hello-world/" class="article-date">
-  <time datetime="2019-01-19T15:58:45.720Z" itemprop="datePublished">2019-01-19</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/19/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="如何使用HEXO快速搭建博客"><a href="#如何使用HEXO快速搭建博客" class="headerlink" title="如何使用HEXO快速搭建博客"></a>如何使用HEXO快速搭建博客</h2><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/19/hello-world/" data-id="cjsh77h0g00048kq9uwo5bjg7" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-
+  <nav id="page-nav">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+  </nav>
 </section>
       </div>
       <footer id="footer">
