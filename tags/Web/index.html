@@ -3,20 +3,15 @@
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
-  <title>Dom元素常用尺寸 | hello</title>
+  <title>Tag: Web | hello</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="以下都是element的属性 内容整理自 这个GitHub Issue div内部滚动条相关高度offsetHeight元素本体高度，不包含margin, 包含 border与padding。 scrollHeight存在滚动条时，子元素的整体高度。 12// 判断是否滚动到底element.scrollHeight - element.scrollTop === element.clientHe">
-<meta name="keywords" content="Dom">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Dom元素常用尺寸">
-<meta property="og:url" content="http://yoursite.com/2019/05/18/Dom元素常用尺寸/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="hello">
+<meta property="og:url" content="http://yoursite.com/tags/Web/index.html">
 <meta property="og:site_name" content="hello">
-<meta property="og:description" content="以下都是element的属性 内容整理自 这个GitHub Issue div内部滚动条相关高度offsetHeight元素本体高度，不包含margin, 包含 border与padding。 scrollHeight存在滚动条时，子元素的整体高度。 12// 判断是否滚动到底element.scrollHeight - element.scrollTop === element.clientHe">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-19T12:49:43.669Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Dom元素常用尺寸">
-<meta name="twitter:description" content="以下都是element的属性 内容整理自 这个GitHub Issue div内部滚动条相关高度offsetHeight元素本体高度，不包含margin, 包含 border与padding。 scrollHeight存在滚动条时，子元素的整体高度。 12// 判断是否滚动到底element.scrollHeight - element.scrollTop === element.clientHe">
+<meta name="twitter:title" content="hello">
   
   
     <link rel="icon" href="/favicon.png">
@@ -152,75 +147,39 @@
   
 </aside>
         
-        <section id="main"><article id="post-Dom元素常用尺寸" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/05/18/Dom元素常用尺寸/" class="article-date">
-  <time datetime="2019-05-18T15:21:16.284Z" itemprop="datePublished">2019-05-18</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
+        <section id="main">
   
-    <h1 class="article-title" itemprop="name">
-      Dom元素常用尺寸
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2019" class="archive-year">2019</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <a href="/2019/05/18/Web性能优化方案/" class="archive-article-date">
+  <time datetime="2019-05-18T15:21:16.282Z" itemprop="datePublished">May 18</time>
+</a>
+      
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2019/05/18/Web性能优化方案/">Web性能常见优化</a>
     </h1>
   
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><code>以下都是element的属性</code></p>
-<p>内容整理自 <a href="https://github.com/iuap-design/blog/issues/38" target="_blank" rel="noopener">这个GitHub Issue</a></p>
-<h1 id="div内部滚动条相关高度"><a href="#div内部滚动条相关高度" class="headerlink" title="div内部滚动条相关高度"></a>div内部滚动条相关高度</h1><h2 id="offsetHeight"><a href="#offsetHeight" class="headerlink" title="offsetHeight"></a>offsetHeight</h2><p>元素本体高度，不包含margin, 包含 border与padding。</p>
-<h2 id="scrollHeight"><a href="#scrollHeight" class="headerlink" title="scrollHeight"></a>scrollHeight</h2><p>存在滚动条时，子元素的整体高度。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 判断是否滚动到底</span></span><br><span class="line">element.scrollHeight - element.scrollTop === element.clientHeight</span><br></pre></td></tr></table></figure>
-<h2 id="scrollTop"><a href="#scrollTop" class="headerlink" title="scrollTop"></a>scrollTop</h2><p>子元素超出父元素的高度</p>
-<h2 id="offsetTop"><a href="#offsetTop" class="headerlink" title="offsetTop"></a>offsetTop</h2><p>与上面三个不是一家人。它是子元素距离爸爸顶部的距离。</p>
-<h1 id="element-getBoundingClientRect"><a href="#element-getBoundingClientRect" class="headerlink" title="element.getBoundingClientRect()"></a>element.getBoundingClientRect()</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// el 应是一个selector, 如 #app</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isInView</span>(<span class="params">el</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> rect = <span class="built_in">document</span>.querySelector(el).getBoundingClientRect()</span><br><span class="line">	<span class="keyword">let</span> &#123;top, left, width, height&#125; = rect  <span class="comment">// top, left是相对于viewport左上角</span></span><br><span class="line">    <span class="keyword">return</span> top &gt; <span class="number">0</span> &amp;&amp; top &lt; innerHeight? <span class="literal">true</span>: <span class="literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>该方法获取的对象，属性解释如下：</p>
-<ul>
-<li>top 距离视口 viewport 顶部的距离。<ul>
-<li>元素在viewport上面时，top &lt; 0</li>
-<li>元素在viewport下面时，top &gt; innerHeight</li>
-<li>可以用于判断元素是否在viewport中</li>
-</ul>
-</li>
-<li>left  距离视口 viewport 左侧的距离</li>
-<li>x     即x坐标，等同于 left</li>
-<li>y     即y坐标，等同于 top</li>
-<li>width 宽度</li>
-<li>height 高度</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/18/Dom元素常用尺寸/" data-id="cjvuxxb9n0003q8q9rjelyblh" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Dom/">Dom</a></li></ul>
-
-    </footer>
+    </header>
   </div>
-  
-    
-<nav id="article-nav">
-  
-  
-    <a href="/2019/05/18/Web性能优化方案/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Web性能常见优化</div>
-    </a>
-  
-</nav>
-
-  
 </article>
+  
+  
+    </div></section>
+  
 
 </section>
       </div>
