@@ -131,7 +131,9 @@
         </div>
         <!-- Post Main Content -->
         <div class="entry-content has_line_number">
-          <p>当执行 new 的时候，到底发生了哪些事情？</p>
+          <!--实现 bind 的核心是什么？如何让 bind 支持 new 调用？ -->
+<p>在介绍 bind 之前，有一个前置的知识需要了解。</p>
+<p>当执行 new 的时候，到底发生了哪些事情？</p>
 <ol>
 <li>构造一个空对象。</li>
 <li>将 function 的 this 绑定到这个空对象上。</li>
