@@ -3,23 +3,19 @@
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
-  <title>Git入门 | hello</title>
+  <title>hello</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="git initgit init 用于创建本地git仓库，在需要创建的目录下使用后，会生成一个名为 .git 的文件夹用于保存数据。  git add在本地仓库创建之后，对任何文件进行修改，都会使其状态发生改变。  如图中所示，使用git status -sb 命令查看状态，红色的M表示未处理的，内容被修改过的文件；红色的？？表示新创建的文件。 1234528534@ChenYitao MINGW">
+  <meta name="description" content="两种做法的比较当然是第二种好啦~~为什么呢，且听下回分解！">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Git入门">
-<meta property="og:url" content="http://yoursite.com/2019/01/20/Git入门/index.html">
+<meta property="og:title" content="hello">
+<meta property="og:url" content="http://yoursite.com/2019/08/26/深入了解函数/index.html">
 <meta property="og:site_name" content="hello">
-<meta property="og:description" content="git initgit init 用于创建本地git仓库，在需要创建的目录下使用后，会生成一个名为 .git 的文件夹用于保存数据。  git add在本地仓库创建之后，对任何文件进行修改，都会使其状态发生改变。  如图中所示，使用git status -sb 命令查看状态，红色的M表示未处理的，内容被修改过的文件；红色的？？表示新创建的文件。 1234528534@ChenYitao MINGW">
+<meta property="og:description" content="两种做法的比较当然是第二种好啦~~为什么呢，且听下回分解！">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://inkymountain.github.io/blog-generator/img/1548169992635.png">
-<meta property="og:image" content="https://inkymountain.github.io/blog-generator/img/1548170278740.png">
-<meta property="og:image" content="https://inkymountain.github.io/blog-generator/img/1548170581436.png">
-<meta property="og:updated_time" content="2019-01-22T15:46:20.072Z">
+<meta property="og:updated_time" content="2019-08-29T15:08:27.015Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Git入门">
-<meta name="twitter:description" content="git initgit init 用于创建本地git仓库，在需要创建的目录下使用后，会生成一个名为 .git 的文件夹用于保存数据。  git add在本地仓库创建之后，对任何文件进行修改，都会使其状态发生改变。  如图中所示，使用git status -sb 命令查看状态，红色的M表示未处理的，内容被修改过的文件；红色的？？表示新创建的文件。 1234528534@ChenYitao MINGW">
-<meta name="twitter:image" content="https://inkymountain.github.io/blog-generator/img/1548169992635.png">
+<meta name="twitter:title" content="hello">
+<meta name="twitter:description" content="两种做法的比较当然是第二种好啦~~为什么呢，且听下回分解！">
   
   
     <link rel="icon" href="/favicon.png">
@@ -155,45 +151,24 @@
   
 </aside>
         
-        <section id="main"><article id="post-Git入门" class="article article-type-post" itemscope="" itemprop="blogPost">
+        <section id="main"><article id="post-深入了解函数" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/01/20/Git入门/" class="article-date">
-  <time datetime="2019-01-19T16:33:50.000Z" itemprop="datePublished">2019-01-20</time>
+    <a href="/2019/08/26/深入了解函数/" class="article-date">
+  <time datetime="2019-08-26T14:57:24.953Z" itemprop="datePublished">2019-08-26</time>
 </a>
     
   </div>
   <div class="article-inner">
     
     
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      Git入门
-    </h1>
-  
-
-      </header>
-    
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="git-init"><a href="#git-init" class="headerlink" title="git init"></a>git init</h2><p>git init 用于创建本地git仓库，在需要创建的目录下使用后，会生成一个名为 .git 的文件夹用于保存数据。</p>
-<p><img src="https://inkymountain.github.io/blog-generator/img/1548169992635.png" alt="1548169992635.png"></p>
-<h2 id="git-add"><a href="#git-add" class="headerlink" title="git add"></a>git add</h2><p>在本地仓库创建之后，对任何文件进行修改，都会使其状态发生改变。</p>
-<p><img src="https://inkymountain.github.io/blog-generator/img/1548170278740.png" alt="1548170278740"></p>
-<p>如图中所示，使用git status -sb 命令查看状态，红色的M表示未处理的，内容被修改过的文件；红色的？？表示新创建的文件。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">28534@ChenYitao MINGW64 /d/frontend/hexo/myblog (master)</span><br><span class="line">$ git add <span class="built_in">source</span>/_posts/*</span><br><span class="line"></span><br><span class="line">28534@ChenYitao MINGW64 /d/frontend/hexo/myblog (master)</span><br><span class="line">$ git add img/*</span><br></pre></td></tr></table></figure>
-<p>然后使用 git add 文件目录  的形式，就可以将未处理的文件添加到待提交列表中。</p>
-<p><img src="https://inkymountain.github.io/blog-generator/img/1548170581436.png" alt="1548170581436"></p>
-<p>此时两个修改的文件状态变为绿色，下一步就可以使用git commit进行提交了。</p>
-<h2 id="git-commit-v"><a href="#git-commit-v" class="headerlink" title="git commit -v"></a>git commit -v</h2><p>git commit 命令即将add后的文件从缓存区提交到本地仓库。-v是指verbose, 繁琐的，给出的提示信息会更详细。</p>
-<p>另外 -m 也是一个常用的参数，通常使用   git commit -v -m “一些提交相关的信息”    的形式来进行提交。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">28534@ChenYitao MINGW64 /d/frontend/hexo/myblog (master)</span><br><span class="line">$ git commit -v -m <span class="string">"新增图片&amp;修改Git入门.md的内容"</span></span><br><span class="line"></span><br><span class="line">[master 7d226c0] 新增图片&amp;修改Git入门.md的内容</span><br><span class="line">2 files changed, 27 insertions(+), 2 deletions(-)</span><br><span class="line">create mode 100644 img/1548169992635.png</span><br></pre></td></tr></table></figure>
+        <h2 id="两种做法的比较"><a href="#两种做法的比较" class="headerlink" title="两种做法的比较"></a>两种做法的比较</h2><p>当然是第二种好啦~~为什么呢，且听下回分解！</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/20/Git入门/" data-id="cjzzhnuff0001vkq9dwd2cg01" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/08/26/深入了解函数/" data-id="cjzzhnufw000mvkq9fewe9wjv" class="article-share-link">Share</a>
       
       
     </footer>
@@ -202,19 +177,19 @@
     
 <nav id="article-nav">
   
-    <a href="/2019/01/21/HTTP入门/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/08/29/深入JS函数/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          HTTP入门
+          (no title)
         
       </div>
     </a>
   
   
-    <a href="/2019/01/20/bash脚本基本命令/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/05/18/Dom元素常用尺寸/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Bash脚本基本命令</div>
+      <div class="article-nav-title">Dom元素常用尺寸</div>
     </a>
   
 </nav>

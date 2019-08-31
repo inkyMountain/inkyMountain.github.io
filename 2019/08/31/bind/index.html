@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>hello</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="当执行 new 的时候，到底发生了哪些事情？  构造一个空对象。 将 function 的 this 绑定到这个空对象上。 将空对象的 __proto__ 指向 function 的 prototype 上。 执行这个 function。 return 上面构造的对象，除非 function 已经返回了一个对象。  关于第五点的详细解释： 12345678910function() &amp;#123;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hello">
+<meta property="og:url" content="http://yoursite.com/2019/08/31/bind/index.html">
+<meta property="og:site_name" content="hello">
+<meta property="og:description" content="当执行 new 的时候，到底发生了哪些事情？  构造一个空对象。 将 function 的 this 绑定到这个空对象上。 将空对象的 __proto__ 指向 function 的 prototype 上。 执行这个 function。 return 上面构造的对象，除非 function 已经返回了一个对象。  关于第五点的详细解释： 12345678910function() &amp;#123;">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-08-31T11:48:34.745Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="hello">
+<meta name="twitter:description" content="当执行 new 的时候，到底发生了哪些事情？  构造一个空对象。 将 function 的 this 绑定到这个空对象上。 将空对象的 __proto__ 指向 function 的 prototype 上。 执行这个 function。 return 上面构造的对象，除非 function 已经返回了一个对象。  关于第五点的详细解释： 12345678910function() &amp;#123;">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <!-- <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600' rel='stylesheet' type='text/css'> -->
+  <!-- <link href="//fonts.googleapis.com/css?family=Source+Code+Pro:400,700" rel="stylesheet" type="text/css"> -->
+  <link href="//fonts.useso.com/css?family=Source+Code+Pro:400,700" rel="stylesheet" type="text/css">
+  <link href="//fonts.useso.com/css?family=Open+Sans:300,600" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head></html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="header-outer" class="outer">
+    <a href="/" class="logo">hello</a>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/about/index.html">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        <div id="search-form-wrap">
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+        </div>
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+        
+        
+          <a id="nav-github-link" class="nav-icon" href="https://github.com/ppoffice/hexo-theme-alex" title="Fork me on GitHub"></a>
+        
+      </nav>
+    </div>
+  </div>
+</header>
+      <nav id="mobile-nav" class="off">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about/index.html" class="mobile-nav-link">About</a>
+  
+  <div id="search-form-wrap-mobile">
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+  </div>
+</nav>
+      <div class="outer">
+        
+          <aside id="sidebar">
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">6</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/08/31/bind/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/29/深入JS函数/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/26/深入了解函数/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2019/05/18/Dom元素常用尺寸/">Dom元素常用尺寸</a>
+          </li>
+        
+          <li>
+            <a href="/2019/05/18/Web性能优化方案/">Web性能常见优化</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dom/">Dom</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Flex/">Flex</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/">HTTP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/">JS</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/">Web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bash/">bash</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery/">jQuery</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/原型链/">原型链</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小程序/">小程序</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/Dom/" style="font-size: 10px;">Dom</a> <a href="/tags/Flex/" style="font-size: 10px;">Flex</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/HTTP/" style="font-size: 10px;">HTTP</a> <a href="/tags/JS/" style="font-size: 20px;">JS</a> <a href="/tags/Web/" style="font-size: 10px;">Web</a> <a href="/tags/bash/" style="font-size: 10px;">bash</a> <a href="/tags/jQuery/" style="font-size: 10px;">jQuery</a> <a href="/tags/原型链/" style="font-size: 10px;">原型链</a> <a href="/tags/小程序/" style="font-size: 10px;">小程序</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">links</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="http://hexo.io">Hexo</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+        <section id="main"><article id="post-bind" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/08/31/bind/" class="article-date">
+  <time datetime="2019-08-31T08:33:02.394Z" itemprop="datePublished">2019-08-31</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>当执行 new 的时候，到底发生了哪些事情？</p>
+<ol>
+<li>构造一个空对象。</li>
+<li>将 function 的 this 绑定到这个空对象上。</li>
+<li>将空对象的 __proto__ 指向 function 的 prototype 上。</li>
+<li>执行这个 function。</li>
+<li>return 上面构造的对象，除非 function 已经返回了一个对象。</li>
+</ol>
+<p>关于第五点的详细解释：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 这些返回语句将被忽略，实际返回的是 new 构造出来的对象。</span></span><br><span class="line">  <span class="comment">// return 1111</span></span><br><span class="line">  <span class="comment">// return 'xxx'</span></span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 只要你返回了一个对象，就会代替默认的返回语句。</span></span><br><span class="line">  <span class="comment">// return new String()</span></span><br><span class="line">  <span class="comment">// return &#123;&#125;</span></span><br><span class="line">  <span class="keyword">return</span> &#123; <span class="attr">name</span>: <span class="string">'cyt'</span> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>更详细的解释请看 <a href="https://stackoverflow.com/questions/1646698/what-is-the-new-keyword-in-javascript" target="_blank" rel="noopener">这个问题</a> 的高赞答案。</p>
+<h1 id="bind"><a href="#bind" class="headerlink" title="bind"></a>bind</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Function</span>.prototype.bind2 = <span class="function"><span class="keyword">function</span>(<span class="params">asThis, ...args</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> fn = <span class="keyword">this</span>;</span><br><span class="line">	</span><br><span class="line">  <span class="keyword">const</span> bindedFn = <span class="function"><span class="keyword">function</span>(<span class="params">...args2</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> fn.call(bindedFn.prototype.isPrototypeOf(<span class="keyword">this</span>)? <span class="keyword">this</span>: asThis, ...args, ...args2);</span><br><span class="line">  &#125;;</span><br><span class="line">  </span><br><span class="line">  bindedFn.prototype = fn.prototype</span><br><span class="line">  <span class="keyword">return</span> bindedFn</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = <span class="built_in">Function</span>.prototype.bind2;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>bindedFn.prototype.isPrototypeOf(this)? this: asThis</li>
+</ul>
+<p>这句话用于判断当前 bindedFn 是普通形式调用还是 new 的形式调用，从而为 fn.call 传递不同的对象。普通形式调用就把希望绑定的 asThis 传入。但如果是 new 形式调用，则需要把 asThis 替换为 new 关键字为 bindedFn 自动生成的空对象，也就是 bindedFn 中的 this 关键字。</p>
+<p>这些操作实际上就是在将 new fn2 的返回，变得和 new fn 一样。</p>
+<p>比如这一段测试代码</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.a = <span class="built_in">arguments</span>[<span class="number">0</span>]</span><br><span class="line">    <span class="comment">// return &#123;&#125;</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">const</span> fn2 = fn.bind2()</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"obj:"</span>, <span class="keyword">new</span> fn2(<span class="number">111</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>function fn 没有返回值，所以 返回的实际上是 new fn2 时自动生成的对象。这个对象传入fn.call() 就可以被修饰，即 a 属性被赋值为 111。代码根本没有 new fn 的过程，全程都是在改变 new fn2 的结果，使其变得和 new fn 一样。</p>
+<h1 id="使用-ES5-改写"><a href="#使用-ES5-改写" class="headerlink" title="使用 ES5 改写"></a>使用 ES5 改写</h1><p>上面的代码使用的许多 ES6 的特性，虽然实现了 bind 的功能，但是失去了意义。因为在一个 bind 都不支持的环境中， ES6 的语法基本也是不受支持的。所以我们需要使用 ES5 的语法替换。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Function</span>.prototype.bind2 = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> asThis = <span class="built_in">arguments</span>[<span class="number">0</span>];</span><br><span class="line">  <span class="keyword">var</span> slice = <span class="built_in">Array</span>.prototype.slice</span><br><span class="line">  <span class="keyword">var</span> args = slice.call(<span class="built_in">arguments</span>, <span class="number">1</span>);</span><br><span class="line">  <span class="keyword">var</span> fn = <span class="keyword">this</span>;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">bindedFn</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> args2 = slice.call(<span class="built_in">arguments</span>, <span class="number">0</span>);</span><br><span class="line">    <span class="keyword">return</span> fn.call(</span><br><span class="line">      bindedFn.prototype.isPrototypeOf(<span class="keyword">this</span>) ? <span class="keyword">this</span> : asThis,</span><br><span class="line">      <span class="built_in">Array</span>.prototype.concat.call(args, args2)</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">  bindedFn.prototype = fn.prototype;</span><br><span class="line">  <span class="keyword">return</span> bindedFn;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>上面是替换后的代码，主要解决的问题在于... 扩展符。</p>
+<p>arguments[0] 获取的是 bind2 函数的第一个参数，也就是希望绑定的 this 对象。</p>
+<p>Array.prototype.slice 是为了获取除 this 以外的参数，之所以用 .call 的形式调用，是因为 arguments 为伪数组对象，并没有 Array.prototype 中的方法，无法直接通过 arguments.slice 途径引用。Array.prototype.concat 同理。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/08/31/bind/" data-id="cjzzhnufn000bvkq9cpwklbyt" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/08/29/深入JS函数/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      <a href="/" class="logo">hello</a>
+      &copy; 2019 陈亦涛<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/jquery.scrollLoading.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

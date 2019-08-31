@@ -76,7 +76,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">6</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">6</span></li></ul>
     </div>
   </div>
 
@@ -88,23 +88,23 @@
       <ul>
         
           <li>
+            <a href="/2019/08/31/bind/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/29/深入JS函数/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/26/深入了解函数/">(no title)</a>
+          </li>
+        
+          <li>
             <a href="/2019/05/18/Dom元素常用尺寸/">Dom元素常用尺寸</a>
           </li>
         
           <li>
             <a href="/2019/05/18/Web性能优化方案/">Web性能常见优化</a>
-          </li>
-        
-          <li>
-            <a href="/2019/05/18/小程序语法/">小程序常用语法</a>
-          </li>
-        
-          <li>
-            <a href="/2019/03/12/Flex布局概览/">Flex布局常用总结</a>
-          </li>
-        
-          <li>
-            <a href="/2019/02/23/jQuery简易版/">jQuery简易版</a>
           </li>
         
       </ul>
@@ -148,6 +148,173 @@
 </aside>
         
         <section id="main">
+  
+    <article id="post-bind" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/08/31/bind/" class="article-date">
+  <time datetime="2019-08-31T08:33:02.394Z" itemprop="datePublished">2019-08-31</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>当执行 new 的时候，到底发生了哪些事情？</p>
+<ol>
+<li>构造一个空对象。</li>
+<li>将 function 的 this 绑定到这个空对象上。</li>
+<li>将空对象的 __proto__ 指向 function 的 prototype 上。</li>
+<li>执行这个 function。</li>
+<li>return 上面构造的对象，除非 function 已经返回了一个对象。</li>
+</ol>
+<p>关于第五点的详细解释：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 这些返回语句将被忽略，实际返回的是 new 构造出来的对象。</span></span><br><span class="line">  <span class="comment">// return 1111</span></span><br><span class="line">  <span class="comment">// return 'xxx'</span></span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 只要你返回了一个对象，就会代替默认的返回语句。</span></span><br><span class="line">  <span class="comment">// return new String()</span></span><br><span class="line">  <span class="comment">// return &#123;&#125;</span></span><br><span class="line">  <span class="keyword">return</span> &#123; <span class="attr">name</span>: <span class="string">'cyt'</span> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>更详细的解释请看 <a href="https://stackoverflow.com/questions/1646698/what-is-the-new-keyword-in-javascript" target="_blank" rel="noopener">这个问题</a> 的高赞答案。</p>
+<h1 id="bind"><a href="#bind" class="headerlink" title="bind"></a>bind</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Function</span>.prototype.bind2 = <span class="function"><span class="keyword">function</span>(<span class="params">asThis, ...args</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> fn = <span class="keyword">this</span>;</span><br><span class="line">	</span><br><span class="line">  <span class="keyword">const</span> bindedFn = <span class="function"><span class="keyword">function</span>(<span class="params">...args2</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> fn.call(bindedFn.prototype.isPrototypeOf(<span class="keyword">this</span>)? <span class="keyword">this</span>: asThis, ...args, ...args2);</span><br><span class="line">  &#125;;</span><br><span class="line">  </span><br><span class="line">  bindedFn.prototype = fn.prototype</span><br><span class="line">  <span class="keyword">return</span> bindedFn</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = <span class="built_in">Function</span>.prototype.bind2;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>bindedFn.prototype.isPrototypeOf(this)? this: asThis</li>
+</ul>
+<p>这句话用于判断当前 bindedFn 是普通形式调用还是 new 的形式调用，从而为 fn.call 传递不同的对象。普通形式调用就把希望绑定的 asThis 传入。但如果是 new 形式调用，则需要把 asThis 替换为 new 关键字为 bindedFn 自动生成的空对象，也就是 bindedFn 中的 this 关键字。</p>
+<p>这些操作实际上就是在将 new fn2 的返回，变得和 new fn 一样。</p>
+<p>比如这一段测试代码</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.a = <span class="built_in">arguments</span>[<span class="number">0</span>]</span><br><span class="line">    <span class="comment">// return &#123;&#125;</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">const</span> fn2 = fn.bind2()</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"obj:"</span>, <span class="keyword">new</span> fn2(<span class="number">111</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>function fn 没有返回值，所以 返回的实际上是 new fn2 时自动生成的对象。这个对象传入fn.call() 就可以被修饰，即 a 属性被赋值为 111。代码根本没有 new fn 的过程，全程都是在改变 new fn2 的结果，使其变得和 new fn 一样。</p>
+<h1 id="使用-ES5-改写"><a href="#使用-ES5-改写" class="headerlink" title="使用 ES5 改写"></a>使用 ES5 改写</h1><p>上面的代码使用的许多 ES6 的特性，虽然实现了 bind 的功能，但是失去了意义。因为在一个 bind 都不支持的环境中， ES6 的语法基本也是不受支持的。所以我们需要使用 ES5 的语法替换。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Function</span>.prototype.bind2 = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> asThis = <span class="built_in">arguments</span>[<span class="number">0</span>];</span><br><span class="line">  <span class="keyword">var</span> slice = <span class="built_in">Array</span>.prototype.slice</span><br><span class="line">  <span class="keyword">var</span> args = slice.call(<span class="built_in">arguments</span>, <span class="number">1</span>);</span><br><span class="line">  <span class="keyword">var</span> fn = <span class="keyword">this</span>;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">bindedFn</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> args2 = slice.call(<span class="built_in">arguments</span>, <span class="number">0</span>);</span><br><span class="line">    <span class="keyword">return</span> fn.call(</span><br><span class="line">      bindedFn.prototype.isPrototypeOf(<span class="keyword">this</span>) ? <span class="keyword">this</span> : asThis,</span><br><span class="line">      <span class="built_in">Array</span>.prototype.concat.call(args, args2)</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">  bindedFn.prototype = fn.prototype;</span><br><span class="line">  <span class="keyword">return</span> bindedFn;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>上面是替换后的代码，主要解决的问题在于... 扩展符。</p>
+<p>arguments[0] 获取的是 bind2 函数的第一个参数，也就是希望绑定的 this 对象。</p>
+<p>Array.prototype.slice 是为了获取除 this 以外的参数，之所以用 .call 的形式调用，是因为 arguments 为伪数组对象，并没有 Array.prototype 中的方法，无法直接通过 arguments.slice 途径引用。Array.prototype.concat 同理。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/08/31/bind/" data-id="cjzzhnufn000bvkq9cpwklbyt" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-深入JS函数" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/08/29/深入JS函数/" class="article-date">
+  <time datetime="2019-08-29T15:04:46.262Z" itemprop="datePublished">2019-08-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="JS-中函数相关的难点"><a href="#JS-中函数相关的难点" class="headerlink" title="JS 中函数相关的难点"></a>JS 中函数相关的难点</h2><h1 id="函数的四种声明方式"><a href="#函数的四种声明方式" class="headerlink" title="函数的四种声明方式"></a>函数的四种声明方式</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fn = <span class="keyword">new</span> <span class="built_in">Function</span>(<span class="string">'x'</span>, <span class="string">'y'</span>, <span class="string">'z'</span>, <span class="string">'return x + y + z'</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">x + y</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> x + y</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> fn = <span class="function"><span class="keyword">function</span> (<span class="params">x + y</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> x + y</span><br><span class="line">&#125;</span><br><span class="line">w</span><br><span class="line"><span class="keyword">const</span> fn = <span class="function">(<span class="params">x, y</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> x + y</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其中，箭头函数不支持 <code>this</code> <code>new</code> <code>arguments</code>，其他功能与普通函数一致。</p>
+<h1 id="This"><a href="#This" class="headerlink" title="This"></a>This</h1><h2 id="箭头函数的-this"><a href="#箭头函数的-this" class="headerlink" title="箭头函数的 this"></a>箭头函数的 this</h2><p>在箭头函数中，this 与其他闭包使用的参数地位是一样的。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="keyword">this</span>)</span><br><span class="line"><span class="keyword">const</span> xxx = <span class="number">1</span></span><br><span class="line"><span class="keyword">const</span> fn = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>) <span class="comment">// 与上面的 this 是同一个对象</span></span><br><span class="line">  <span class="built_in">console</span>.log(xxx)  <span class="comment">// 这里的 xxx 与 this 的性质是一样的</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="this-的面试题"><a href="#this-的面试题" class="headerlink" title="this 的面试题"></a>this 的面试题</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">button.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>问：以上代码输出是什么？</p>
+<p>答：不知道。这取决于如何调用这个绑定在 onlick 属性中的函数。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> length = <span class="number">10</span> </span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.length)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> obj = &#123; </span><br><span class="line">	length: <span class="number">5</span>, </span><br><span class="line">	method(fn) &#123; </span><br><span class="line">		fn() </span><br><span class="line">		<span class="built_in">arguments</span>[<span class="number">0</span>]() </span><br><span class="line">	&#125; </span><br><span class="line">&#125;  </span><br><span class="line">obj.method(fn, <span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<p>问：以上代码输出什么？</p>
+<p>答：</p>
+<p>fn() 输出的是当前页面的 iframe 个数，具体的值取决于页面。</p>
+<p>arguments[0]() 中，this 是 arguments，所以 this.length 就是 arguments 的长度。为所有传入参数的个数，所以是<code>2</code>。</p>
+<h1 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h1><h2 id="阶乘"><a href="#阶乘" class="headerlink" title="阶乘"></a>阶乘</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> factorial = <span class="function"><span class="params">n</span> =&gt;</span> </span><br><span class="line">	n === <span class="number">1</span>? <span class="number">1</span>: n * factorial(n - <span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<h1 id="斐波拉契数列"><a href="#斐波拉契数列" class="headerlink" title="斐波拉契数列"></a>斐波拉契数列</h1><p>斐波拉契数列虽然名字很洋气，但想要描述它却很简单，因为它是一个简单的数列，第 n 项可以表示为</p>
+<p>f(n) = f(n-1) + f(n-2)    (当n &gt;2)</p>
+<p>讲人话就是，0  1  1  2  3  5  8  13  21  34  就是一个斐波拉契数列，每一项的值是前两项之和。用 JS 来求其通项函数有两种方式：递归 &amp; 迭代。</p>
+<h2 id="递归做法"><a href="#递归做法" class="headerlink" title="递归做法"></a>递归做法</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fib = (n) = n === <span class="number">1</span>? <span class="number">1</span>:</span><br><span class="line">	n === <span class="number">0</span>? <span class="number">0</span>:</span><br><span class="line">  fib(n - <span class="number">1</span>) + fib(n - <span class="number">2</span>)</span><br><span class="line">fib(<span class="number">9</span>) <span class="comment">// 34</span></span><br></pre></td></tr></table></figure>
+<p>如何理解？以这个数列作为例子，0  1  1  2  3        5  8  13  21  34 </p>
+<p>这个数列一共有 10 项，首先明确一下数字的表示方法，n = 0 表示数列的第一项，n = 2 表示数列的第二项。如果我们调用 fib(9)，也就是要求数列第十项的值，那么函数第一次运行时就会返回 fib(8) + fib(7)，那么fib 函数将继续以n=8 与 n=7 执行。上述代码的 n\=\=\=1, n\=\=\=0是这个递归函数的中止条件。</p>
+<h2 id="迭代做法"><a href="#迭代做法" class="headerlink" title="迭代做法"></a>迭代做法</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">f = <span class="function">(<span class="params">n</span>) =&gt;</span> fn(<span class="number">2</span>, n, <span class="number">0</span>, <span class="number">1</span>)</span><br><span class="line">fn = <span class="function">(<span class="params">start, end, num1, num2</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> start === end? num1 + num2: fn(start + <span class="number">1</span>, end, num2, num1 + num2)</span><br><span class="line">&#125;</span><br><span class="line">f(<span class="number">9</span>) <span class="comment">// 34</span></span><br></pre></td></tr></table></figure>
+<p>fn(2, n, 0, 1) 四个参数的含义是，以数列的第三项为起点，到第n+1项为止，且指定该数列的前两项为 0 和 1。</p>
+<p>这里依然采用 0  1  1  2  3        5  8  13  21  34 作为例子，从第三项开始，也就意味着要得到f(9)，即第十项的值，总共需要将前两项相加8次才能得到。这也是 start 与 end 参数的含义，因为 9 - 2 + 1 = 8。</p>
+<p>在函数的运行过程中，第一次运行时参数 num1 &amp; num2 是数列的第一项与第二项。</p>
+<p>第二次运行时参数 num1 &amp; num2 已经变成了数列的第二项与第三项。</p>
+<p>直到第八次运行函数，此时 start === end 是 true，返回了num1+num2，在不断的递归后，这里的num1&amp;num2 已经变成了数列的第八项与第九项，最终返回第八项+第九项，也就是第十项的值。</p>
+<h2 id="循环做法"><a href="#循环做法" class="headerlink" title="循环做法"></a>循环做法</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fib</span>(<span class="params">n</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (n === <span class="number">0</span> || n === <span class="number">1</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> n;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">const</span> numbers = [<span class="number">0</span>, <span class="number">1</span>];</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">2</span>; i &lt;= n; i++) &#123;</span><br><span class="line">    numbers[i] = numbers[i - <span class="number">1</span>] + numbers[i - <span class="number">2</span>];</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> numbers[n];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="总结-amp-比较"><a href="#总结-amp-比较" class="headerlink" title="总结 &amp; 比较"></a>总结 &amp; 比较</h2><p>递归与迭代，都属于递归</p>
+<h1 id="记忆化"><a href="#记忆化" class="headerlink" title="记忆化"></a>记忆化</h1><p>将每次计算的结果缓存。调用函数时，首先根据传入的参数，去缓存中寻找结果，找不到再继续执行原有的函数。</p>
+<h2 id="React-记忆化应用"><a href="#React-记忆化应用" class="headerlink" title="React 记忆化应用"></a>React 记忆化应用</h2><p>React.memo()                # memorize 的缩写，目标是<code>子组件</code>。</p>
+<p>下列代码中，Child2 组件（也是一个函数），在使用 React.memo() 后实现了记忆化，在 function App 的状态发生变化而重新执行的时候，如果 Child2 <code>入参不变</code>的情况下，就不会重新执行。而如果使用没有记忆化的 Child 组件，则每次都会执行 function Child。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function Child() &#123;</span><br><span class="line">  // 子组件</span><br><span class="line">&#125;</span><br><span class="line">const Child2 = React.memo(Child) // 也可传入第二个参数，来自定义参数发生何种变化时，才重新执行 function Child</span><br><span class="line">function App() &#123;</span><br><span class="line">  return (</span><br><span class="line">  	&lt;div&gt;App&lt;/div&gt;</span><br><span class="line">    &lt;Child2&gt;Child2&lt;/Child2&gt;</span><br><span class="line">  )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>React.useCallback(fn, [ m ])     # 以 m 变量作为标准，只有 m 变化时，才会调用新的函数。否则将启用缓存的函数。目标是 <code>callback 函数</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const callback = React.useCallback(() =&gt; &#123;</span><br><span class="line">  console.log(m)</span><br><span class="line">&#125;, [m])</span><br></pre></td></tr></table></figure>
+<p>以 [m] 中的 m 为判断标准，决定是否启用函数的缓存。这与 React.memo() 原理类似，区别是</p>
+<p>React.memo()</p>
+<ul>
+<li>作用对象：子组件</li>
+<li>判断标准：子组件的入参</li>
+</ul>
+<p>React.useCallback()</p>
+<ul>
+<li>作用对象：组件的回调函数</li>
+<li>判断标准：调用 React.useCallback 时自定义变量。</li>
+</ul>
+<h1 id="函数柯里化"><a href="#函数柯里化" class="headerlink" title="函数柯里化"></a>函数柯里化</h1><p>柯里化也是一个很糊弄人的名词，虽然不知道柯里是什么意思，但是记住下面这句话就行了。</p>
+<p><code>把接收多个参数的函数，转变为一次只接收一个参数的函数，这个过程就是柯里化。</code></p>
+<p>例子：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> a + b</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// newParams 是新传入的参数，即后面的2 3 4. addThree(1)(2, 3)(4)</span></span><br><span class="line"><span class="keyword">const</span> currify = <span class="function">(<span class="params">fn, params = []</span>) =&gt;</span></span><br><span class="line">  params.length === fn.length</span><br><span class="line">    ? fn.apply(<span class="literal">undefined</span>, params)</span><br><span class="line">    : <span class="function">(<span class="params">...newParams</span>) =&gt;</span> currify(fn, [...params, ...newParams])</span><br></pre></td></tr></table></figure>
+<p>function currify() {}</p>
+<p>这个柯里化函数实现的本质就是，将柯里化对象的参数缓存起来，等缓存的参数个数与函数定义时的参数个数相等时，执行这个柯里化对象函数。</p>
+<h1 id="高阶函数"><a href="#高阶函数" class="headerlink" title="高阶函数"></a>高阶函数</h1><p>定义：将函数作为参数，或以函数为返回值的函数，就是一个函数。</p>
+<p>举例：柯里化函数（以函数为返回值）、回调函数（以函数为参数）</p>
+<p>问：bind.call() 是什么意思？</p>
+<p>答：仅传入一个参数的 bind 的作用，是将其 this 的 this，变为传入的对象。例如 fn.bind({ name: ‘cyt’ }) ，这里 bind 方法的 this 是 fn 这个函数，效果是将 fn 的 this 变为 { name: ‘cyt’ }</p>
+<p>bind.call(fn, { name: ‘cyt’ }) 显式地将 fn 指定为 bind 的 this，所以它的意思与 fn.bind({ name: ‘cyt’ }) 是一样的。</p>
+<p>以下代码可以用来测试效果</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> bind = <span class="built_in">Function</span>.prototype.bind</span><br><span class="line"><span class="keyword">const</span> obj = &#123; <span class="attr">name</span>: <span class="string">'cyt'</span>, <span class="attr">fn</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>)</span><br><span class="line">&#125;&#125;</span><br><span class="line">bind.call(obj.fn, &#123; <span class="attr">name</span>: <span class="string">'cyt'</span> &#125;)() <span class="comment">// &#123; name: 'cyt' &#125;</span></span><br></pre></td></tr></table></figure>
+<p>bind.call(fn, { name: ‘cyt’ }, a, b, c) 的意思是：</p>
+<p>将函数 fn 的 this 指定为 { name: ‘cyt’}，并绑定 fn 的后几个参数为 a, b, c。</p>
+<p>问：apply.call() 是什么意思？</p>
+<p>答：apply.call(fn, { name: ‘cyt’ }, [ a, b, c ]) 与 bind.call() 意思基本一样，区别是 bind.call() 仅指定了部分参数，还有部分参数的值是未知的，所以只能返回一个函数。而apply.call() 已经将所有参数都传好了，所以可以返回一个确定的值。</p>
+<p>问：call.call() 是什么意思？</p>
+<p>答：call.call(fn, { name: ‘cyt’ }, a, b, c ) 与 apply.call() 更为接近，区别是 call.call() 通过零碎的方式的传入 fn 的所有参数，而apply.call() 是通过一个数组传入所有参数的。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/08/29/深入JS函数/" data-id="cjzzhnufv000lvkq9vxf0jvtm" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-深入了解函数" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/08/26/深入了解函数/" class="article-date">
+  <time datetime="2019-08-26T14:57:24.953Z" itemprop="datePublished">2019-08-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="两种做法的比较"><a href="#两种做法的比较" class="headerlink" title="两种做法的比较"></a>两种做法的比较</h2><p>当然是第二种好啦~~为什么呢，且听下回分解！</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/08/26/深入了解函数/" data-id="cjzzhnufw000mvkq9fewe9wjv" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
   
     <article id="post-Dom元素常用尺寸" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
@@ -197,7 +364,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/18/Dom元素常用尺寸/" data-id="cjvuxxb9n0003q8q9rjelyblh" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/18/Dom元素常用尺寸/" data-id="cjzzhnufp000fvkq9qg8z3y8u" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Dom/">Dom</a></li></ul>
@@ -278,7 +445,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/18/Web性能优化方案/" data-id="cjvuxxba3000fq8q9l4rhck0s" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/18/Web性能优化方案/" data-id="cjzzhnufm0009vkq9ss906yke" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Web/">Web</a></li></ul>
@@ -338,7 +505,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/18/小程序语法/" data-id="cjvuxxbab000lq8q9zua0wrjg" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/18/小程序语法/" data-id="cjzzhnugi0012vkq9fgwtmwxj" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/小程序/">小程序</a></li></ul>
@@ -413,7 +580,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/12/Flex布局概览/" data-id="cjvuxxb9j0001q8q950v201fn" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/12/Flex布局概览/" data-id="cjzzhnufi0004vkq9bcpopsi3" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Flex/">Flex</a></li></ul>
@@ -456,7 +623,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/02/23/jQuery简易版/" data-id="cjvuxxba7000hq8q9wwpwaykx" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/02/23/jQuery简易版/" data-id="cjzzhnufy000pvkq980v9gr4w" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jQuery/">jQuery</a></li></ul>
@@ -510,7 +677,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/02/17/一张图理清JS原型链/" data-id="cjvuxxbad000mq8q9461kxtnq" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/02/17/一张图理清JS原型链/" data-id="cjzzhnug8000zvkq97sscx9fk" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/原型链/">原型链</a></li></ul>
@@ -597,252 +764,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/02/17/JS中的数据类型转换/" data-id="cjvuxxb9x000bq8q9p3pwa6dx" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/02/17/JS中的数据类型转换/" data-id="cjzzhnufu000jvkq9fjqq6x54" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS/">JS</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-JS中的数据类型" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/02/14/JS中的数据类型/" class="article-date">
-  <time datetime="2019-02-14T12:23:37.318Z" itemprop="datePublished">2019-02-14</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/02/14/JS中的数据类型/">JS中的数据类型</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>​    在JS中，总共有7种数据类型。</p>
-<ul>
-<li><p>number</p>
-</li>
-<li><p>boolean</p>
-</li>
-<li><p>string</p>
-</li>
-<li><p>symbol</p>
-</li>
-<li><p>null</p>
-</li>
-<li><p>undefined</p>
-</li>
-<li><p>object</p>
-</li>
-</ul>
-<p>​    这7种数据类型，可以大致分为三个类别，第一类是number, boolean, string, symbol等基本类型; 第二类是null, undefined; 第三类就是object. 把object单独分为一类是因为它包含的范围太大了。</p>
-<h1 id="基本类型"><a href="#基本类型" class="headerlink" title="基本类型"></a>基本类型</h1><h2 id="number"><a href="#number" class="headerlink" title="number"></a>number</h2><p>​    JS与JAVA相比，数据类型大大减少了。比如数字，JAVA中整数根据位数不同，分为byte, short, int, long等，还有浮点数float和double，而在JS中被笼统地归为number了。其他类型也有类似的情况。JS中所有数字, 都以64位的浮点数进行存储的，包括整数。也因为如此，在进行小数加减的时候，要注意结果小数点后面的位数。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="number">0.1</span> + <span class="number">0.2</span>);  <span class="comment">//0.30000000000000004</span></span><br><span class="line"><span class="built_in">console</span>.log((<span class="number">0.1</span> + <span class="number">0.2</span>).toFixed(<span class="number">1</span>));  <span class="comment">//0.3</span></span><br></pre></td></tr></table></figure>
-<p>​    这一小段代码除了说明浮点数的问题以外，还有另外需要注意的地方。虽然number, string等常被归类到基本类型中，但这其实是不准确的，因为number, string是具有方法和属性的，继承自Number.prototype和String.prototype。所以准确地说，它们是半对象半基本类型，比如上述代码中的toFixed()方法。</p>
-<p>​    number使用前缀区分数字的进制，前缀“0”代表八进制，“0b”代表二进制， “0x”代表16进制。涉及到与用户交互的层面时，都会被转化为十进制。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="number">011</span>);  <span class="comment">//9</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">0b11</span>);  <span class="comment">//3</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">0x11</span>);  <span class="comment">//17</span></span><br></pre></td></tr></table></figure>
-<h2 id="null-amp-undefined"><a href="#null-amp-undefined" class="headerlink" title="null &amp; undefined"></a>null &amp; undefined</h2><p>​    这两个同时存在是一个错误，意思完全相同。但是既然存在了就只能接受它。它俩的使用有一个约定俗成的规矩，就是空对象用null，未定义基本类型使用undefined。undefined比null更为常见。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var a  //undefined</span><br></pre></td></tr></table></figure>
-<h2 id="string"><a href="#string" class="headerlink" title="string"></a>string</h2><p>​    JS由于历史原因，字符串仅支持两个字节的字符，如果字符字节大于2，会被认为是两个字符。比如“𝌆”。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">“𝌆”.length  <span class="comment">//2</span></span><br></pre></td></tr></table></figure>
-<p>这也意味着，字符串的length属性是不可靠的，不一定等于字符的数量。</p>
-<h2 id="symbol"><a href="#symbol" class="headerlink" title="symbol"></a>symbol</h2><p>​    symbol是ES6中新加入的数据类型，其作用是产生一个不会发生重复的数据。这里通过介绍使用symbol作为变量名，来讲解其基本用法。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> name = <span class="built_in">Symbol</span>();</span><br><span class="line"><span class="keyword">let</span> age = <span class="built_in">Symbol</span>();</span><br><span class="line"><span class="keyword">let</span> person = &#123;</span><br><span class="line">	[name]: <span class="string">"陈亦涛"</span>,</span><br><span class="line">	[age]: <span class="number">23</span>,</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(person[name]);  <span class="comment">//陈亦涛</span></span><br><span class="line"><span class="built_in">console</span>.log(person[age]);	<span class="comment">//23</span></span><br></pre></td></tr></table></figure>
-<p>​    上述代码声明了两个symbol类型的变量，并把它们作为person对象的属性名。Symbol()是产生数据的方式，它的作用是产生一个不会重复的数据，但是我们看不到这个数据，因为数据不是这个数据类型想要强调的地方，它的目的是避免重复。下面示范错误的写法。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> name = <span class="keyword">new</span> <span class="built_in">Symbol</span>();  <span class="comment">//error</span></span><br></pre></td></tr></table></figure>
-<p>​    symbol不是对象，所以不能使用new操作符。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> name = <span class="built_in">Symbol</span>();</span><br><span class="line"><span class="keyword">let</span> person = &#123;</span><br><span class="line">	name: <span class="string">"陈亦涛"</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">console</span>.log(person[name]);  <span class="comment">//undefined</span></span><br><span class="line"><span class="built_in">console</span>.log(person[<span class="string">"name"</span>]);  <span class="comment">//陈亦涛</span></span><br><span class="line"><span class="built_in">console</span>.log(person.name);  <span class="comment">//陈亦涛</span></span><br></pre></td></tr></table></figure>
-<p>​    这里出现的错误是对象中的name属性未用中括号 [] 包裹。那么这里的name会被认为是字符串“name”而不是变量name。</p>
-<p>​    总之，请与传统的字符串属性名相区别，时刻谨记我们所需要的是一个变量作为属性名，而不是字符串。</p>
-<h1 id="object"><a href="#object" class="headerlink" title="object"></a>object</h1><p>​    对象是一些有关联数据的集合体，就像整理房间的收纳盒。    它的表现形式是键值对，即key: value的组合。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> person = &#123;</span><br><span class="line">    name: <span class="string">"陈亦涛"</span>,</span><br><span class="line">    age: <span class="string">"23"</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>比如这个对象将人物的信息收纳到一起，可以使用person.name 或 person[“name”]的方式来调用需要的属性。</p>
-<ul>
-<li>Object.keys()  获取一个对象的key</li>
-<li>in操作符  判断一个变量是否存在于对象中</li>
-<li>for in    遍历一个对象的key</li>
-<li>for of    遍历一个对象的value</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/02/14/JS中的数据类型/" data-id="cjvuxxb9u0009q8q9nzaw7kgz" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS/">JS</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-CSS基本布局技巧" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/01/31/CSS基本布局技巧/" class="article-date">
-  <time datetime="2019-01-31T05:58:54.099Z" itemprop="datePublished">2019-01-31</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/31/CSS基本布局技巧/">CSS基本布局技巧</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><hr></p>
-<h1 id="左右结构"><a href="#左右结构" class="headerlink" title="左右结构"></a>左右结构</h1><p>​    使用悬浮属性可以达到左右结构的效果。具体的实现方法是给所有标签加上float: left 或者 float: right。但是浮动后会有副作用，因为浮动元素脱离了文档流，盒子的宽度会缩减到最小，并且会和下方未浮动的元素重合。重合的问题可以通过clear属性解决。具体的方法有三种：</p>
-<ol>
-<li>使用一个空的div，给这个div施加clear: both属性。但是这个方法，会给页面增加无用的标签，容易让人费解其作用。</li>
-<li>给父元素加overflow: hidden属性。这个属性本身是文档流内容超出父元素边框时的处理方式，但它有个自动清理子元素的副作用，所以可以用来解决问题。</li>
-<li>给父元素加clearfix类。这个方法是通过给div的::after伪元素施加clear属性，来达到清理的目的。这个方法与第一个方法的原理类似，但利用的是伪元素，不会给页面添加没有意义的div标签，是<strong>最为推荐</strong>的做法。</li>
-</ol>
-<h1 id="左中右结构"><a href="#左中右结构" class="headerlink" title="左中右结构"></a>左中右结构</h1><p>​    左中右结构属于左右结构的一种特殊形式，所以基本做法与左右结构相同。额外的操作是给三个元素设置width属性，并使其和为100%，达到刚好占用一行的目的。最好给三个元素再加上box-sizing: border-box 属性，避免给元素加了margin或者padding属性后，元素宽度溢出而导致自动换行。</p>
-<h1 id="水平居中"><a href="#水平居中" class="headerlink" title="水平居中"></a>水平居中</h1><p>​    如果是内联元素，实现居中只要在父元素上加text-align: center 就可以了。行级元素则稍微复杂一些，实现水平居中主要有两种方法。</p>
-<ul>
-<li><p>margin: 0 auto</p>
-<p>使用这个属性虽然可以使元素居中，但是需要指定元素的宽度。如果不指定元素宽度，则会默认占据100%的行宽，这样margin属性也就失去意义了。</p>
-</li>
-<li><p>第二种方法是将display修改为inline-block。这样元素就同时具备的inline和block的一部分特性，可以通过text-align: center来实现居中了。</p>
-</li>
-</ul>
-<p>第二种方法是更为推荐的方法，因为给元素设置定死的width和height属性是许多bug的来源，应该尽量避免去设置这两个属性。使用JS来根据文档流大小，动态修改宽高也是一种可行的方案。</p>
-<h1 id="垂直居中"><a href="#垂直居中" class="headerlink" title="垂直居中"></a>垂直居中</h1><p>​    在inline元素中，由于高度无法通过height指定，只能使用line-height来改变，所以文字总是居中的。<br>​    在块级元素中，未指定height属性时，可以使用上下相等的padding实现居中。这样实现的好处是，任意改变元素的内容，总是垂直居中的。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/31/CSS基本布局技巧/" data-id="cjvuxxb9e0000q8q974umlhmj" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-HTML常用标签" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/01/26/HTML常用标签/" class="article-date">
-  <time datetime="2019-01-26T15:23:24.872Z" itemprop="datePublished">2019-01-26</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/26/HTML常用标签/">HTML标签基础</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="a"><a href="#a" class="headerlink" title="a"></a>a</h1><p>a标签全称 anchor，意思是锚，是最常用的标签之一。它常用于跳转链接，也可以用于定位当前页面的某个元素。</p>
-<h2 id="href"><a href="#href" class="headerlink" title="href"></a>href</h2><p>href 的全称是 Hypertext Reference，是 a 标签最为重要的属性，它代表点击该标签后跳转的目标。内容可以是相对路径，也可以是绝对路径。href 的取值可以是以下内容。</p>
-<ul>
-<li><p>page.html</p>
-<p>引用了同一目录下，名为 anotherPage.html 的网页，点击后将跳转到该网页，使用了相对路径，浏览器会自动补全为当前网页所在目录。</p>
-</li>
-<li><p><a href="http://www.website.com/page.html" target="_blank" rel="noopener">http://www.website.com/page.html</a></p>
-<p>这个属于绝对引用，于相对路径而言更易理解，但是灵活性较差。如果我们移动了项目文件夹，这个引用将失效，浏览器会回应404状态码。而相对路径没有这个问题。</p>
-</li>
-<li><p>//page.html</p>
-<p>这种方式并未规定访问的协议，浏览器会默认采用当前页面的协议进行不全。例如，使用file://协议访问时，点击该链接后，会继续使用file://协议进行访问。Http协议同理。</p>
-</li>
-<li><p>#xxx</p>
-<p>当xxx的内容是某个元素的id时，滚动条会转至该元素所在位置，用于页面位置的跳转。如果xxx为空，则跳转至页首。</p>
-</li>
-<li><p>javascript: ;</p>
-<p>该写法被称为伪协议。因为 javascript 这个单词所在位置，原本应是file or http，但是javascript是脚本而不是协议名称，所以被称为伪协议。冒号后面如果加上JS代码，就会在点击a标签时执行。直接加；而不是JS代码的话，就不会有任何效果产生。这种写法常用于解决一些奇怪的需求，比如点击链接后，但却不作出任何反应，或者是以下奇怪的代码：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"javascript:alert("</span>缓存清除成功！！")"&gt;</span>清理缓存<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="target"><a href="#target" class="headerlink" title="target"></a>target</h2><p>target 属性规定了新链接打开的位置，它的值包括：</p>
-<ol>
-<li>_blank    以新的标签页打开页面</li>
-<li>_self    在当前标签页打开页面</li>
-<li>_top    在顶层窗口中打开</li>
-<li>_parent    在父窗口中打开</li>
-<li>某个iframe标签的name属性</li>
-</ol>
-<p>其中1和2容易理解，3 - 5与 iframe 标签相关。下面这段代码用于解释这几个属性：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">iframe</span> <span class="attr">id</span>=<span class="string">"grandfather"</span> <span class="attr">name</span>=<span class="string">"grandfather"</span>&gt;</span></span><br><span class="line">    	<span class="tag">&lt;<span class="name">iframe</span> <span class="attr">id</span>=<span class="string">"father"</span>&gt;</span></span><br><span class="line">        	<span class="tag">&lt;<span class="name">a</span> <span class="attr">id</span>=<span class="string">"fatherLink"</span> <span class="attr">target</span>=<span class="string">"_top"</span>&gt;</span>father<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">iframe</span> <span class="attr">id</span>=<span class="string">"son"</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">a</span> <span class="attr">id</span>=<span class="string">"sonLink"</span> <span class="attr">target</span>=<span class="string">"_parent"</span>&gt;</span>son<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br><span class="line">    	<span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">target</span>=<span class="string">"grandfather"</span> <span class="attr">id</span>=<span class="string">"outerLink"</span>&gt;</span>outerLink<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>注：为改善阅读体验，无关的html属性被省略了。</p>
-<p>点击 id 为 son 的 a 标签后，因为 target 属性是 _parent, 所以浏览器会在它的父窗口（id=father 的 iframe 元素）中打开页面。</p>
-<p>若点击 id=fatherLink 的 a 标签，target 内容是 _top，也就是顶层窗口，浏览器会在当前标签页打开页面。</p>
-<p>在现代前端开发中，由于 iframe 标签不常用，所以_top、_parent、iframe 的 name属性基本不会出现，_blank和 _self 是比较常见的属性。</p>
-<h2 id="download"><a href="#download" class="headerlink" title="download"></a>download</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"http://www.baidu.com"</span> <span class="attr">download</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>download 属性用于告诉浏览器，这个链接需要用下载的形式打开。比如上面这行代码，由于加了 download属性，浏览器将下载百度首页的html文件。使用该属性需要注意以下问题：</p>
-<ol>
-<li><p>file 协议访问的网页无效，http 协议下是可行的。</p>
-</li>
-<li><p>必须是同源的网页。</p>
-<blockquote>
-<p>如果两个页面的协议，端口（如果有指定）和域名都相同，则两个页面具有相同的<strong>源</strong>。 - from <a href="https://developer.mozilla.org/zh-CN/docs/Web/Security/Same-origin_policy" target="_blank" rel="noopener">MDN</a></p>
-</blockquote>
-</li>
-</ol>
-<h1 id="form"><a href="#form" class="headerlink" title="form"></a>form</h1><p>​    form 表单是十分重要的数据提交方式，也是网页中以post方式提交数据的唯一途径。在form中，使用<strong>method</strong>属性定义表单提交的方式。method 仅支持 post 和 get 方式，如果填写其他方式，如delete，会被自动转化成 get 方式请求数据。post方式是最为常用的属性。</p>
-<p>​    以post方式提交的数据，会经过 urlEncoded 这个步骤，英文字母不会发生改变，中文会被转化为 utf-8 编码。比如“密码”两个字，会被编码成E5 AF 86 和 E7 A0 81，然后每个字节被%包围，最终效果是%E5%AF%86%E7%A0%81 。中文冒号“：”会被编码成 %EF%BC%9A 。</p>
-<p>​    <strong>action</strong>属性定义了form提交的目标地址，和a标签的href属性一样，可以使用相对路径和绝对路径。</p>
-<h2 id="input"><a href="#input" class="headerlink" title="input"></a>input</h2><h3 id="type"><a href="#type" class="headerlink" title="type"></a>type</h3><p>较为常用的input元素类型有：</p>
-<ul>
-<li>text</li>
-<li>radio</li>
-<li>checkbox</li>
-<li>file</li>
-<li>password</li>
-<li>submit</li>
-</ul>
-<p>另外，textarea和select虽然与上述Input元素形式不太相同，但也是在表单中常用的标签。</p>
-<h3 id="name-amp-value"><a href="#name-amp-value" class="headerlink" title="name &amp; value"></a>name &amp; value</h3><p>​    在表单中，数据以 key&amp;value 的形式提交，key 对应了 name 属性，value 对应了同名的 value 属性。每个数据项通常配合label标签使用。label标签的作用是将文字与选项联系成一个整体。比如以下代码：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"password"</span>&gt;</span>密码<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"password"</span> <span class="attr">name</span>=<span class="string">"password"</span> <span class="attr">id</span>=<span class="string">"password"</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>如果没有label标签，那么密码两个字仅仅是普通的字符；而搭配label使用，点击密码字符时，输入框中的文字也将被选中。</p>
-<p>另外，上述代码有一种简化的写法：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">label</span>&gt;</span>密码<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"password"</span> <span class="attr">name</span>=<span class="string">"password"</span>&gt;</span><span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>这样写的好处是，input标签的id不必写了</p>
-<p>### </p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/26/HTML常用标签/" data-id="cjvuxxb9p0005q8q9sy0ufk82" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML/">HTML</a></li></ul>
 
     </footer>
   </div>
